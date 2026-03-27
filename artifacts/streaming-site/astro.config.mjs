@@ -16,9 +16,4 @@ export default defineConfig({
     port: parseInt(process.env.PORT || '19326'),
     allowedHosts: true,
   },
-  vite: {
-    server: {
-      allowedHosts: true,
-    },
-  },
 });
