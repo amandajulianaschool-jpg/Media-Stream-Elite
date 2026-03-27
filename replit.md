@@ -21,7 +21,8 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 ```text
 artifacts-monorepo/
 ├── artifacts/              # Deployable applications
-│   └── api-server/         # Express API server
+│   ├── api-server/         # Express API server
+│   └── streaming-site/     # Astro 5 SSG streaming service website
 ├── lib/                    # Shared libraries
 │   ├── api-spec/           # OpenAPI spec + Orval codegen config
 │   ├── api-client-react/   # Generated React Query hooks
@@ -90,6 +91,27 @@ Generated Zod schemas from the OpenAPI spec (e.g. `HealthCheckResponse`). Used b
 ### `lib/api-client-react` (`@workspace/api-client-react`)
 
 Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHealthCheck`, `healthCheck`).
+
+### `artifacts/streaming-site` (`@workspace/streaming-site`)
+
+Astro 5.0 SSG website for a premium global digital media streaming service. Built with Islands Architecture — static HTML by default, React components only for interactive elements.
+
+- **Framework**: Astro 5.x (Static Site Generation)
+- **Styling**: Tailwind CSS 3.x with custom dark theme (deep blacks, navy blues, brand accent #3B82F6)
+- **Typography**: Inter font family
+- **Architecture**: `.astro` files for layouts, pages, and static sections. React islands (`client:load`) only for MobileMenu and FaqAccordion
+- **SEO**: Full meta tags (OG, Twitter, canonical, hreflang for UK/FR), JSON-LD schemas (FAQPage + Service)
+- **Content Collections**: Configured for `guides` and `blog` collections (Astro Content Collections)
+- **Structure**:
+  - `src/layouts/Layout.astro` — base HTML layout with SEO head tags and JSON-LD
+  - `src/pages/index.astro` — main landing page
+  - `src/components/*.astro` — static Astro components (Header, Hero, Features, ContentShowcase, Pricing, Setup, Faq, Footer)
+  - `src/components/react/*.tsx` — React islands (MobileMenu, FaqAccordion)
+  - `src/content/guides/` — guides content collection
+  - `src/content/blog/` — blog content collection
+  - `src/content.config.ts` — content collection schemas
+- **Build**: `pnpm --filter @workspace/streaming-site run build` outputs to `dist/`
+- **Dev**: `pnpm --filter @workspace/streaming-site run dev`
 
 ### `scripts` (`@workspace/scripts`)
 

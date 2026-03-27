@@ -1,0 +1,133 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  market?: 'uk' | 'fr';
+}
+
+const {
+  title = 'StreamVault – The Ultimate 4K Global Streaming Service | 20,000+ Channels',
+  description = 'Access 20,000+ global TV channels, blockbuster movies and premium series in stunning 4K. Anti-Freeze Technology, instant activation. Serving UK & France. Try free for 24 hours.',
+  canonical = 'https://streamvault.tv',
+  ogImage = 'https://streamvault.tv/og-image.jpg',
+  market = 'uk',
+} = Astro.props;
+
+const hreflang = market === 'fr' ? 'fr-FR' : 'en-GB';
+const locale = market === 'fr' ? 'fr_FR' : 'en_GB';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which devices are supported for streaming?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "StreamVault supports all major devices including Amazon Firestick, Apple TV (all generations), Android phones and tablets, Smart TVs (Samsung, LG, Sony, Hisense), iPhone, iPad, Windows PC, Mac, and any web browser."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is StreamVault compatible with VPN services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, StreamVault works seamlessly with all major VPN providers including NordVPN, ExpressVPN, Surfshark, and CyberGhost. Stream all 20,000+ channels without VPN restrictions or bandwidth throttling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a free trial available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer a 24-hour free trial so you can test the full service before committing. No credit card required. After the trial, choose from our Monthly (€12.99), 6-Month (€49.99), or 12-Month (€79.99) plans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many simultaneous connections are included?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All plans include 2 simultaneous connections, allowing you to stream on two devices at the same time. Extra connections can be added for a small fee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Anti-Freeze Technology 2.0?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anti-Freeze Technology 2.0 is our proprietary buffering elimination system using intelligent pre-loading and adaptive bitrate streaming to ensure content plays without interruptions, even on connections as low as 10 Mbps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly can I get access after subscribing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Activation is instant. You receive your login credentials via email within seconds of payment. Download our app or open the web player and start watching immediately."
+      }
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "StreamVault",
+  "serviceType": "Digital Media Streaming",
+  "description": description,
+  "provider": {
+    "@type": "Organization",
+    "name": "StreamVault",
+    "url": canonical
+  },
+  "areaServed": ["GB", "FR"],
+  "offers": [
+    { "@type": "Offer", "name": "Monthly Plan", "price": "12.99", "priceCurrency": "EUR" },
+    { "@type": "Offer", "name": "6-Month Plan", "price": "49.99", "priceCurrency": "EUR" },
+    { "@type": "Offer", "name": "12-Month Plan", "price": "79.99", "priceCurrency": "EUR" }
+  ]
+};
+---
+<!doctype html>
+<html lang={market === 'fr' ? 'fr' : 'en'} class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={hreflang} href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:site_name" content="StreamVault" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </head>
+  <body class="bg-dark-950 text-white font-sans antialiased overflow-x-hidden">
+    <slot />
+  </body>
+</html>
