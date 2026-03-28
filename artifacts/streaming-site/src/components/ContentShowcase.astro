@@ -3,34 +3,34 @@ const categories = [
   {
     title: 'Live Sports',
     items: [
-      { name: 'Premier League', tag: 'LIVE', color: 'from-green-500 to-emerald-700' },
-      { name: 'Champions League', tag: 'LIVE', color: 'from-blue-500 to-indigo-700' },
-      { name: 'NBA Basketball', tag: 'LIVE', color: 'from-orange-500 to-red-700' },
-      { name: 'Formula 1', tag: 'LIVE', color: 'from-red-500 to-rose-800' },
-      { name: 'UFC & Boxing', tag: 'PPV', color: 'from-purple-500 to-violet-800' },
-      { name: 'Cricket World', tag: 'LIVE', color: 'from-amber-500 to-yellow-700' },
+      { name: 'Premier League', image: '/images/content/premier-league.png' },
+      { name: 'Champions League', image: '/images/content/champions-league.png' },
+      { name: 'NBA Basketball', image: '/images/content/nba.png' },
+      { name: 'Formula 1', image: '/images/content/formula1.png' },
+      { name: 'UFC & Boxing', image: '/images/content/ufc-boxing.png' },
+      { name: 'Cricket World', image: '/images/content/cricket.png' },
     ],
   },
   {
     title: 'Latest Movies',
     items: [
-      { name: 'Action Blockbusters', tag: '4K', color: 'from-red-600 to-orange-800' },
-      { name: 'Sci-Fi Collection', tag: 'NEW', color: 'from-cyan-500 to-blue-800' },
-      { name: 'Drama & Thriller', tag: 'HD', color: 'from-slate-500 to-slate-800' },
-      { name: 'Comedy Hits', tag: 'NEW', color: 'from-yellow-500 to-amber-700' },
-      { name: 'Horror Vault', tag: '18+', color: 'from-gray-700 to-gray-900' },
-      { name: 'Family & Kids', tag: 'ALL', color: 'from-pink-400 to-purple-600' },
+      { name: 'Action Blockbusters', image: '/images/content/action.png' },
+      { name: 'Sci-Fi Collection', image: '/images/content/scifi.png' },
+      { name: 'Drama & Thriller', image: '/images/content/drama-thriller.png' },
+      { name: 'Comedy Hits', image: '/images/content/comedy.png' },
+      { name: 'Horror Vault', image: '/images/content/horror.png' },
+      { name: 'Family & Kids', image: '/images/content/family.png' },
     ],
   },
   {
     title: 'Trending Series',
     items: [
-      { name: 'Crime & Mystery', tag: 'S5', color: 'from-gray-600 to-zinc-800' },
-      { name: 'K-Drama Collection', tag: 'HOT', color: 'from-pink-500 to-rose-700' },
-      { name: 'Documentary', tag: 'NEW', color: 'from-teal-500 to-emerald-800' },
-      { name: 'Anime Universe', tag: 'SUB', color: 'from-violet-500 to-purple-800' },
-      { name: 'Reality TV', tag: 'LIVE', color: 'from-fuchsia-500 to-pink-800' },
-      { name: 'Classic Series', tag: 'HD', color: 'from-stone-500 to-stone-800' },
+      { name: 'Crime & Mystery', image: '/images/content/crime-mystery.png' },
+      { name: 'K-Drama Collection', image: '/images/content/kdrama.png' },
+      { name: 'Documentary', image: '/images/content/documentary.png' },
+      { name: 'Anime Universe', image: '/images/content/anime.png' },
+      { name: 'Reality TV', image: '/images/content/reality-tv.png' },
+      { name: 'Classic Series', image: '/images/content/classics.png' },
     ],
   },
 ];
@@ -46,7 +46,7 @@ const categories = [
   </div>
 
   {categories.map((category) => (
-    <div class="mb-12">
+    <div class="mb-14">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-5">
         <h3 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
           {category.title === 'Live Sports' && (
@@ -55,21 +55,25 @@ const categories = [
           {category.title}
         </h3>
       </div>
-      <div class="flex gap-4 px-4 sm:px-6 lg:px-8 overflow-x-auto pb-4 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
+      <div class="content-scroll flex gap-4 md:gap-5 px-4 sm:px-6 lg:px-8 overflow-x-auto pb-4">
         {category.items.map((item) => (
-          <div class="flex-shrink-0 w-52 md:w-60 group cursor-pointer">
-            <div class={`relative aspect-[16/10] rounded-xl bg-gradient-to-br ${item.color} overflow-hidden mb-3 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl`}>
-              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-              <div class="absolute top-3 left-3">
-                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-black/40 backdrop-blur-sm text-white">{item.tag}</span>
-              </div>
-              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+          <div class="flex-shrink-0 w-40 sm:w-44 md:w-48 group cursor-pointer">
+            <div class="relative aspect-[2/3] rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-[1.04] group-hover:shadow-2xl group-hover:shadow-brand-500/10 ring-1 ring-white/[0.06] group-hover:ring-brand-500/30">
+              <img
+                src={item.image}
+                alt={item.name}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="w-12 h-12 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                 </div>
               </div>
-              <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
-                <p class="text-sm font-semibold text-white">{item.name}</p>
+              <div class="absolute bottom-0 left-0 right-0 p-3.5">
+                <p class="text-sm font-semibold text-white leading-snug drop-shadow-lg">{item.name}</p>
               </div>
             </div>
           </div>
@@ -80,7 +84,11 @@ const categories = [
 </section>
 
 <style>
-  .scrollbar-hide::-webkit-scrollbar {
+  .content-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .content-scroll::-webkit-scrollbar {
     display: none;
   }
 </style>
