@@ -8,8 +8,21 @@ import Pricing from '../components/Pricing.astro';
 import Setup from '../components/Setup.astro';
 import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Which devices are supported for streaming?", "acceptedAnswer": { "@type": "Answer", "text": "StreamVault supports all major devices including Amazon Firestick, Apple TV, Android, Smart TVs, iPhone, iPad, Windows PC, Mac, and any web browser." } },
+    { "@type": "Question", "name": "Is StreamVault compatible with VPN services?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, StreamVault works seamlessly with all major VPN providers including NordVPN, ExpressVPN, Surfshark, and CyberGhost." } },
+    { "@type": "Question", "name": "Is there a free trial available?", "acceptedAnswer": { "@type": "Answer", "text": "We offer a 24-hour free trial. No credit card required. After the trial, choose from our Monthly, 6-Month, or 12-Month plans." } },
+    { "@type": "Question", "name": "How many simultaneous connections are included?", "acceptedAnswer": { "@type": "Answer", "text": "All plans include 2 simultaneous connections." } },
+    { "@type": "Question", "name": "What is Anti-Freeze Technology 2.0?", "acceptedAnswer": { "@type": "Answer", "text": "Our proprietary buffering elimination system using intelligent pre-loading and adaptive bitrate streaming." } },
+    { "@type": "Question", "name": "How quickly can I get access after subscribing?", "acceptedAnswer": { "@type": "Answer", "text": "Activation is instant. You receive your login credentials via email within seconds of payment." } }
+  ]
+};
 ---
-<Layout>
+<Layout schema={faqSchema}>
   <Header />
   <main>
     <Hero />

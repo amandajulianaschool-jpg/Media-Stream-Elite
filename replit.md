@@ -103,13 +103,24 @@ Astro 5.0 SSG website for a premium global digital media streaming service. Buil
 - **SEO**: Full meta tags (OG, Twitter, canonical, hreflang for UK/FR), JSON-LD schemas (FAQPage + Service)
 - **Content Collections**: Configured for `guides` and `blog` collections (Astro Content Collections)
 - **Structure**:
-  - `src/layouts/Layout.astro` — base HTML layout with SEO head tags and JSON-LD
-  - `src/pages/index.astro` — main landing page
-  - `src/components/*.astro` — static Astro components (Header, Hero, Features, ContentShowcase, Pricing, Setup, Faq, Footer)
-  - `src/components/react/*.tsx` — React islands (MobileMenu, FaqAccordion)
+  - `src/layouts/Layout.astro` — base HTML layout with SEO head, optional `schema` prop for per-page JSON-LD, `noIndex` prop
+  - `src/layouts/LegalLayout.astro` — legal page layout with WebPage schema, breadcrumbs, prose styling
+  - `src/layouts/BlogPost.astro` — blog article layout with Article schema, related posts sidebar, CTA widget
+  - `src/pages/index.astro` — main landing page (injects its own FAQPage schema)
+  - `src/pages/terms.astro` — Terms of Service
+  - `src/pages/privacy.astro` — Privacy Policy (GDPR compliant UK/FR)
+  - `src/pages/dmca.astro` — DMCA Policy
+  - `src/pages/cookies.astro` — Cookie Policy (EU/UK compliant)
+  - `src/pages/device-setup.astro` — Device setup guides (Firestick, Android TV, Apple TV, Smart TVs, Mobile)
+  - `src/pages/troubleshooting.astro` — FAQ-style troubleshooting (uses React accordion island)
+  - `src/pages/blog/index.astro` — Blog grid index page
+  - `src/pages/blog/[...slug].astro` — Dynamic blog post routing
+  - `src/components/*.astro` — static Astro components (Header, Hero, Features, ContentShowcase, Pricing, Setup, Faq, Footer, Breadcrumbs)
+  - `src/components/react/*.tsx` — React islands (MobileMenu, FaqAccordion, TroubleshootingAccordion)
   - `src/content/guides/` — guides content collection
-  - `src/content/blog/` — blog content collection
-  - `src/content.config.ts` — content collection schemas
+  - `src/content/blog/` — blog content collection (4 posts: welcome, VPN guide, Firestick setup, Premier League)
+  - `src/content.config.ts` — content collection schemas (blog has category enum: news/tutorials/reviews/tips)
+- **Note**: In Astro 5, `post.id` includes `.md` extension — use `post.id.replace(/\.md$/, '')` for URL slugs
 - **Build**: `pnpm --filter @workspace/streaming-site run build` outputs to `dist/`
 - **Dev**: `pnpm --filter @workspace/streaming-site run dev`
 

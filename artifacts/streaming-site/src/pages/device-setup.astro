@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Device Setup Guide",
+  "description": "Step-by-step installation guides for StreamVault on Firestick, Android TV, Apple TV, Smart TVs, and mobile devices.",
+  "publisher": { "@type": "Organization", "name": "StreamVault" }
+};
+
+const devices = [
+  {
+    name: 'Amazon Firestick',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`,
+    steps: [
+      'From the Firestick home screen, go to Settings > My Fire TV > Developer Options.',
+      'Enable "Apps from Unknown Sources".',
+      'Install the Downloader app from the Amazon App Store.',
+      'Open Downloader and enter the StreamVault APK URL provided in your welcome email.',
+      'Install the app and launch it. Enter your login credentials to start streaming.',
+    ],
+    tips: 'For best performance, connect your Firestick via Ethernet adapter. Clear cache regularly via Settings > Applications.',
+  },
+  {
+    name: 'Android TV / Google TV',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+    steps: [
+      'Open the Google Play Store on your Android TV.',
+      'Search for "StreamVault" or use the Downloader app.',
+      'Install the StreamVault app.',
+      'Open the app and enter your login credentials from your welcome email.',
+      'Select your preferred channel or content and start watching in 4K.',
+    ],
+    tips: 'Enable "Unknown sources" in Security settings if installing via APK. Recommended internet speed: 25 Mbps for 4K.',
+  },
+  {
+    name: 'Apple TV',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+    steps: [
+      'Open the App Store on your Apple TV.',
+      'Search for a compatible IPTV player app (e.g., IPTV Smarters, GSE Smart IPTV).',
+      'Install the player app.',
+      'Open the app and select "Xtream Codes API" or "M3U URL" as the login method.',
+      'Enter the server details, username, and password from your StreamVault welcome email.',
+    ],
+    tips: 'Apple TV 4K (2nd generation or later) recommended for the best 4K HDR experience.',
+  },
+  {
+    name: 'Samsung / LG Smart TV',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+    steps: [
+      'Open the built-in app store on your Smart TV (Samsung: Smart Hub / LG: LG Content Store).',
+      'Search for a compatible IPTV player (e.g., IPTV Smarters, Smart IPTV).',
+      'Install and open the player app.',
+      'Enter your StreamVault credentials using the Xtream Codes login method.',
+      'Browse the channel list and start streaming.',
+    ],
+    tips: 'For Smart TVs without app store access, use a Firestick or Chromecast plugged into an HDMI port.',
+  },
+  {
+    name: 'Mobile (iOS & Android)',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
+    steps: [
+      'Download a compatible IPTV player from the App Store (iOS) or Google Play Store (Android).',
+      'Open the app and choose "Xtream Codes API" as the login method.',
+      'Enter the server URL, username, and password from your welcome email.',
+      'Browse channels, movies, and series on the go.',
+      'Use Wi-Fi for the best streaming quality; mobile data works but uses significant bandwidth.',
+    ],
+    tips: 'Enable picture-in-picture mode on iOS for multitasking while watching.',
+  },
+];
+---
+<Layout
+  title="Device Setup Guide | StreamVault"
+  description="Step-by-step installation guides for StreamVault on Firestick, Android TV, Apple TV, Smart TVs, and mobile devices."
+  schema={pageSchema}
+  canonical="https://streamvault.tv/device-setup"
+>
+  <Header />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Device Setup' }]} />
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
+    <div class="text-center mb-16">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Device Setup Guide</h1>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">Follow our step-by-step guides to set up StreamVault on your preferred device. Most installations take under 5 minutes.</p>
+    </div>
+
+    <div class="space-y-8">
+      {devices.map((device) => (
+        <article class="rounded-2xl bg-dark-800/40 border border-white/[0.06] overflow-hidden hover:border-brand-500/20 transition-colors">
+          <div class="p-6 md:p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 flex-shrink-0">
+                <Fragment set:html={device.icon} />
+              </div>
+              <h2 class="text-xl md:text-2xl font-bold text-white">{device.name}</h2>
+            </div>
+
+            <ol class="space-y-3 mb-6">
+              {device.steps.map((step, i) => (
+                <li class="flex gap-4">
+                  <span class="flex-shrink-0 w-7 h-7 rounded-full bg-brand-500/10 text-brand-400 text-sm font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                  <p class="text-slate-300 leading-relaxed">{step}</p>
+                </li>
+              ))}
+            </ol>
+
+            <div class="rounded-xl bg-brand-500/5 border border-brand-500/10 p-4">
+              <p class="text-sm text-slate-400">
+                <strong class="text-brand-400">Pro Tip:</strong> {device.tips}
+              </p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center rounded-2xl bg-gradient-to-r from-brand-500/10 to-brand-600/5 border border-brand-500/20 p-8 md:p-12">
+      <h2 class="text-2xl font-bold text-white mb-3">Need Help With Setup?</h2>
+      <p class="text-slate-400 mb-6 max-w-lg mx-auto">Our 24/7 support team can guide you through the installation process on any device. Average response time: under 2 minutes.</p>
+      <a href="https://wa.me/447000000000?text=Hi%20StreamVault%2C%20I%20need%20help%20with%20device%20setup!" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-[#25d366] hover:bg-[#22c55e] text-white font-semibold rounded-xl transition-all shadow-lg shadow-green-500/25">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Contact Support on WhatsApp
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Layout>

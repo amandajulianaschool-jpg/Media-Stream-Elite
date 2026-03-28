@@ -1,0 +1,44 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  lastUpdated?: string;
+  breadcrumbLabel: string;
+  canonical?: string;
+}
+
+const { title, description, lastUpdated = '15 March 2026', breadcrumbLabel, canonical } = Astro.props;
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": title,
+  "description": description,
+  "publisher": {
+    "@type": "Organization",
+    "name": "StreamVault",
+    "url": "https://streamvault.tv"
+  },
+  "dateModified": "2026-03-15",
+  "inLanguage": "en-GB"
+};
+---
+<Layout title={`${title} | StreamVault`} description={description} schema={pageSchema} canonical={canonical}>
+  <Header />
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: breadcrumbLabel }]} />
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
+    <div class="mb-10">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">{title}</h1>
+      <p class="text-slate-400">Last updated: {lastUpdated}</p>
+    </div>
+    <article class="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-headings:font-bold prose-p:text-slate-300 prose-p:leading-relaxed prose-a:text-brand-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-li:text-slate-300 prose-hr:border-white/10">
+      <slot />
+    </article>
+  </main>
+  <Footer />
+</Layout>
