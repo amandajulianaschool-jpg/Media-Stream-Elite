@@ -1,0 +1,38 @@
+Act as a Senior Astro Developer and Internationalization (i18n) Expert. I am expanding "StreamVault" to the Nordic market. I need a robust multi-language structure using Astro 5.0 SSG and Subdirectories.
+
+### 1. Astro Config (i18n Setup):
+Update `astro.config.mjs` with the following configuration:
+- defaultLocale: "en"
+- locales: ["en", "da", "no", "sv", "fi", "is"]
+- routing: { prefixDefaultLocale: false }
+- Mapping: 
+    - da: Danish (Denmark)
+    - no: Norwegian (Norway)
+    - sv: Swedish (Sweden)
+    - fi: Finnish (Finland)
+    - is: Icelandic (Iceland)
+
+### 2. File Architecture:
+Create localized versions of the landing page in the following paths:
+- /src/pages/da/index.astro (Danish)
+- /src/pages/no/index.astro (Norwegian)
+- /src/pages/sv/index.astro (Swedish)
+- /src/pages/fi/index.astro (Finnish)
+- /src/pages/is/index.astro (Icelandic)
+
+### 3. Professional Copywriting & Localization:
+Translate the Hero H1 and Primary CTA for each version to look native and professional:
+- **Danish (da):** "Den Ultimative 4K Streaming Oplevelse" | CTA: "Se Planer"
+- **Norwegian (no):** "Den Ultimative 4K Strømmeopplevelsen" | CTA: "Se Planer"
+- **Swedish (sv):** "Den Ultimata 4K-Streamingupplevelsen" | CTA: "Visa Planer"
+- **Finnish (fi):** "Ylivertainen 4K-Suoratoistokokemus" | CTA: "Katso Suunnitelmat"
+- **Icelandic (is):** "Hin Fullkomna 4K Streymisupplifun" | CTA: "Skoða Áætlanir"
+
+### 4. SEO & Hreflang Logic:
+Update the global SEO component in `Layout.astro` to dynamically inject `<link rel="alternate" hreflang="x" href="y" />` for all 6 versions. This is CRITICAL to avoid duplicate content penalties from Google in the Nordic region.
+
+### 5. Header Language Switcher:
+Update the Glassmorphic Header to include a "Nordic Selector" dropdown. Use minimalist text labels (DK, NO, SE, FI, IS, EN) or small circular flags that match the "StreamVault" premium aesthetic. Ensure it is fully responsive.
+
+### Technical Constraint:
+Maintain 100/100 Lighthouse score. Ensure all images use 'astro:assets' for optimization. The layout must remain centered and symmetrical as previously implemented.

@@ -100,13 +100,20 @@ Astro 5.0 SSG website for a premium global digital media streaming service. Buil
 - **Styling**: Tailwind CSS 3.x with custom dark theme (deep blacks, navy blues, brand accent #3B82F6)
 - **Typography**: Inter font family
 - **Architecture**: `.astro` files for layouts, pages, and static sections. React islands (`client:load`) only for MobileMenu and FaqAccordion
-- **SEO**: Full meta tags (OG, Twitter, canonical, hreflang for UK/FR), JSON-LD schemas (FAQPage + Service)
+- **i18n**: Astro 5 built-in i18n with subdirectory routing. Default locale `en` (no prefix), Nordic locales: `da`, `no`, `sv`, `fi`, `is` (prefixed). Translations in `src/i18n/translations.ts`. Layout injects dynamic hreflang tags for all 6 locales + x-default.
+- **SEO**: Full meta tags (OG, Twitter, canonical, per-locale hreflang for all 6 versions + x-default), JSON-LD schemas (FAQPage + Service)
 - **Content Collections**: Configured for `guides` and `blog` collections (Astro Content Collections)
 - **Structure**:
-  - `src/layouts/Layout.astro` — base HTML layout with SEO head, optional `schema` prop for per-page JSON-LD, `noIndex` prop
+  - `src/i18n/translations.ts` — centralized locale configs, hero translations, page meta for all 6 locales
+  - `src/layouts/Layout.astro` — base HTML layout with SEO head, optional `schema` prop for per-page JSON-LD, `noIndex` prop, `locale` prop for i18n
   - `src/layouts/LegalLayout.astro` — legal page layout with WebPage schema, breadcrumbs, prose styling
   - `src/layouts/BlogPost.astro` — blog article layout with Article schema, related posts sidebar, CTA widget
-  - `src/pages/index.astro` — main landing page (injects its own FAQPage schema)
+  - `src/pages/index.astro` — main landing page, English (injects its own FAQPage schema)
+  - `src/pages/da/index.astro` — Danish landing page
+  - `src/pages/no/index.astro` — Norwegian landing page
+  - `src/pages/sv/index.astro` — Swedish landing page
+  - `src/pages/fi/index.astro` — Finnish landing page
+  - `src/pages/is/index.astro` — Icelandic landing page
   - `src/pages/terms.astro` — Terms of Service
   - `src/pages/privacy.astro` — Privacy Policy (GDPR compliant UK/FR)
   - `src/pages/dmca.astro` — DMCA Policy

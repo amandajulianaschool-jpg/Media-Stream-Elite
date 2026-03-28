@@ -1,32 +1,36 @@
 ---
+import { allLocalesList, getLocaleUrl, type Locale } from '../i18n/translations';
+
 interface Props {
   title?: string;
   description?: string;
   canonical?: string;
   ogImage?: string;
   ogType?: 'website' | 'article';
-  market?: 'uk' | 'fr';
+  locale?: Locale;
   schema?: Record<string, any>;
   noIndex?: boolean;
 }
 
 const {
   title = 'StreamVault – The Ultimate 4K Global Streaming Service | 20,000+ Channels',
-  description = 'Access 20,000+ global TV channels, blockbuster movies and premium series in stunning 4K. Anti-Freeze Technology, instant activation. Serving UK & France. Try free for 24 hours.',
+  description = 'Access 20,000+ global TV channels, blockbuster movies and premium series in stunning 4K. Anti-Freeze Technology, instant activation. Try free for 24 hours.',
   canonical = 'https://streamvault.tv',
   ogImage = 'https://streamvault.tv/opengraph.jpg',
   ogType = 'website',
-  market = 'uk',
+  locale = 'en' as Locale,
   schema,
   noIndex = false,
 } = Astro.props;
 
-const hreflang = market === 'fr' ? 'fr-FR' : 'en-GB';
-const locale = market === 'fr' ? 'fr_FR' : 'en_GB';
+const localeConfig = allLocalesList.find(l => l.code === locale) || allLocalesList[0];
 const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+const localeCodes = allLocalesList.map(l => l.code);
+const pathname = Astro.url.pathname;
+const isLocaleHomePage = pathname === '/' || localeCodes.some(c => pathname === `/${c}/` || pathname === `/${c}`);
 ---
 <!doctype html>
-<html lang={market === 'fr' ? 'fr' : 'en'} class="dark">
+<html lang={localeConfig.htmlLang} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,7 +41,10 @@ const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow, max-image-
     <meta name="robots" content={robotsContent} />
 
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang={hreflang} href={canonical} />
+    {isLocaleHomePage && allLocalesList.map(l => (
+      <link rel="alternate" hreflang={l.hreflang} href={getLocaleUrl(l.code)} />
+    ))}
+    {isLocaleHomePage && <link rel="alternate" hreflang="x-default" href="https://streamvault.tv/" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta property="og:title" content={title} />
@@ -45,7 +52,7 @@ const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow, max-image-
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content={locale} />
+    <meta property="og:locale" content={localeConfig.ogLocale} />
     <meta property="og:site_name" content="StreamVault" />
 
     <meta name="twitter:card" content="summary_large_image" />

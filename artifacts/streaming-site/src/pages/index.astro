@@ -8,6 +8,9 @@ import Pricing from '../components/Pricing.astro';
 import Setup from '../components/Setup.astro';
 import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
+import { pageMeta } from '../i18n/translations';
+
+const meta = pageMeta.en;
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -22,10 +25,10 @@ const faqSchema = {
   ]
 };
 ---
-<Layout schema={faqSchema}>
-  <Header />
+<Layout schema={faqSchema} locale="en" title={meta.title} description={meta.description} canonical="https://streamvault.tv/">
+  <Header locale="en" />
   <main>
-    <Hero />
+    <Hero locale="en" />
     <Features />
     <ContentShowcase />
     <Pricing />

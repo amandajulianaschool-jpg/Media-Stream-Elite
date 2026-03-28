@@ -6,6 +6,13 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://streamvault.tv',
   output: 'static',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'da', 'no', 'sv', 'fi', 'is'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     react(),
     tailwind(),

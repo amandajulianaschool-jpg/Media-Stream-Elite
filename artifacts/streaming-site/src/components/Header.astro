@@ -1,9 +1,18 @@
 ---
 import MobileMenu from './react/MobileMenu';
+import { allLocalesList, getLocalePath, type Locale } from '../i18n/translations';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const currentLocale = allLocalesList.find(l => l.code === locale) || allLocalesList[0];
+const otherLocales = allLocalesList.filter(l => l.code !== locale);
 ---
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" role="banner">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-18 flex items-center justify-between" aria-label="Main navigation">
-    <a href="/" class="flex items-center gap-2.5 group" aria-label="StreamVault - Home">
+    <a href={getLocalePath(locale)} class="flex items-center gap-2.5 group" aria-label="StreamVault - Home">
       <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-brand-500/25">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -23,6 +32,48 @@ import MobileMenu from './react/MobileMenu';
     </ul>
 
     <div class="flex items-center gap-3">
+      <div class="relative" id="locale-switcher">
+        <button
+          id="locale-toggle"
+          type="button"
+          class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white border border-white/10 hover:border-white/20 rounded-lg transition-all hover:bg-white/5 uppercase tracking-wider"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Select language"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+          {currentLocale.shortLabel}
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 transition-transform" id="locale-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div
+          id="locale-dropdown"
+          class="absolute right-0 top-full mt-2 w-40 rounded-xl bg-dark-800/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/40 py-1.5 opacity-0 invisible transition-all duration-200 scale-95 origin-top-right"
+          role="menu"
+          aria-label="Language options"
+        >
+          <a
+            href={getLocalePath(locale)}
+            class="flex items-center gap-2.5 px-3.5 py-2 text-sm text-brand-400 font-medium bg-brand-500/10"
+            role="menuitem"
+            aria-current="true"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span>
+            {currentLocale.label}
+            <span class="ml-auto text-[10px] font-bold text-brand-400/60 uppercase">{currentLocale.shortLabel}</span>
+          </a>
+          {otherLocales.map(l => (
+            <a
+              href={getLocalePath(l.code)}
+              class="flex items-center gap-2.5 px-3.5 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+              role="menuitem"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+              {l.label}
+              <span class="ml-auto text-[10px] font-bold text-slate-600 uppercase">{l.shortLabel}</span>
+            </a>
+          ))}
+        </div>
+      </div>
       <a href="#pricing" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-500 hover:bg-brand-400 text-white text-sm font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-brand-500/25 hover:shadow-brand-400/40 hover:scale-105">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         Join Now
@@ -63,4 +114,33 @@ import MobileMenu from './react/MobileMenu';
       }
     });
   });
+
+  const toggle = document.getElementById('locale-toggle');
+  const dropdown = document.getElementById('locale-dropdown');
+  const chevron = document.getElementById('locale-chevron');
+
+  if (toggle && dropdown && chevron) {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.contains('opacity-100');
+      if (isOpen) {
+        dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+        dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+        chevron.style.transform = 'rotate(0deg)';
+        toggle.setAttribute('aria-expanded', 'false');
+      } else {
+        dropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+        dropdown.classList.add('opacity-100', 'visible', 'scale-100');
+        chevron.style.transform = 'rotate(180deg)';
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    document.addEventListener('click', () => {
+      dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+      dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+      chevron.style.transform = 'rotate(0deg)';
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  }
 </script>
