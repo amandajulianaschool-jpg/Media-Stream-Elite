@@ -1,6 +1,15 @@
 import { useState } from 'react';
 
-const faqs = [
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs?: FaqItem[];
+}
+
+const defaultFaqs: FaqItem[] = [
   {
     question: 'Which devices are supported for streaming?',
     answer: 'StreamVault supports all major devices including Amazon Firestick, Apple TV (all generations), Android phones and tablets, Smart TVs (Samsung, LG, Sony, Hisense), iPhone, iPad, Windows PC, Mac, and any web browser. Our app is available on Google Play Store and Apple App Store.',
@@ -11,7 +20,7 @@ const faqs = [
   },
   {
     question: 'Is there a free trial available?',
-    answer: 'We offer a 24-hour free trial so you can test the full service before committing to a plan. No credit card required for the trial. After the trial, choose from our Monthly (€12.99), 6-Month (€49.99), or 12-Month (€79.99) plans.',
+    answer: 'We offer a 24-hour free trial so you can test the full service before committing to a plan. No credit card required for the trial. After the trial, choose from our Monthly, 6-Month, or 12-Month plans.',
   },
   {
     question: 'How many simultaneous connections are included?',
@@ -27,8 +36,9 @@ const faqs = [
   },
 ];
 
-export default function FaqAccordion() {
+export default function FaqAccordion({ faqs }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const items = faqs && faqs.length > 0 ? faqs : defaultFaqs;
 
   const toggle = (i: number) => {
     setOpenIndex(openIndex === i ? null : i);
@@ -36,7 +46,7 @@ export default function FaqAccordion() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-3">
-      {faqs.map((faq, i) => (
+      {items.map((faq, i) => (
         <div
           key={i}
           className="rounded-xl border border-white/[0.07] bg-dark-800/50 overflow-hidden transition-all duration-200 hover:border-brand-500/30"

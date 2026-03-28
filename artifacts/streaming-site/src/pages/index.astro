@@ -9,31 +9,33 @@ import Setup from '../components/Setup.astro';
 import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
 import { pageMeta } from '../i18n/translations';
+import { t } from '../i18n/ui';
 
-const meta = pageMeta.en;
+const locale = 'en' as const;
+const meta = pageMeta[locale];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Which devices are supported for streaming?", "acceptedAnswer": { "@type": "Answer", "text": "StreamVault supports all major devices including Amazon Firestick, Apple TV, Android, Smart TVs, iPhone, iPad, Windows PC, Mac, and any web browser." } },
-    { "@type": "Question", "name": "Is StreamVault compatible with VPN services?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, StreamVault works seamlessly with all major VPN providers including NordVPN, ExpressVPN, Surfshark, and CyberGhost." } },
-    { "@type": "Question", "name": "Is there a free trial available?", "acceptedAnswer": { "@type": "Answer", "text": "We offer a 24-hour free trial. No credit card required. After the trial, choose from our Monthly, 6-Month, or 12-Month plans." } },
-    { "@type": "Question", "name": "How many simultaneous connections are included?", "acceptedAnswer": { "@type": "Answer", "text": "All plans include 2 simultaneous connections." } },
-    { "@type": "Question", "name": "What is Anti-Freeze Technology 2.0?", "acceptedAnswer": { "@type": "Answer", "text": "Our proprietary buffering elimination system using intelligent pre-loading and adaptive bitrate streaming." } },
-    { "@type": "Question", "name": "How quickly can I get access after subscribing?", "acceptedAnswer": { "@type": "Answer", "text": "Activation is instant. You receive your login credentials via email within seconds of payment." } }
+    { "@type": "Question", "name": t(locale, 'faq.q1'), "acceptedAnswer": { "@type": "Answer", "text": t(locale, 'faq.a1') } },
+    { "@type": "Question", "name": t(locale, 'faq.q2'), "acceptedAnswer": { "@type": "Answer", "text": t(locale, 'faq.a2') } },
+    { "@type": "Question", "name": t(locale, 'faq.q3'), "acceptedAnswer": { "@type": "Answer", "text": t(locale, 'faq.a3') } },
+    { "@type": "Question", "name": t(locale, 'faq.q4'), "acceptedAnswer": { "@type": "Answer", "text": t(locale, 'faq.a4') } },
+    { "@type": "Question", "name": t(locale, 'faq.q5'), "acceptedAnswer": { "@type": "Answer", "text": t(locale, 'faq.a5') } },
+    { "@type": "Question", "name": t(locale, 'faq.q6'), "acceptedAnswer": { "@type": "Answer", "text": t(locale, 'faq.a6') } },
   ]
 };
 ---
-<Layout schema={faqSchema} locale="en" title={meta.title} description={meta.description} canonical="https://streamvault.tv/">
-  <Header locale="en" />
+<Layout schema={faqSchema} locale={locale} title={meta.title} description={meta.description} canonical="https://streamvault.tv/">
+  <Header locale={locale} />
   <main>
-    <Hero locale="en" />
-    <Features />
-    <ContentShowcase />
-    <Pricing />
-    <Setup />
-    <Faq />
+    <Hero locale={locale} />
+    <Features locale={locale} />
+    <ContentShowcase locale={locale} />
+    <Pricing locale={locale} />
+    <Setup locale={locale} />
+    <Faq locale={locale} />
   </main>
-  <Footer />
+  <Footer locale={locale} />
 </Layout>

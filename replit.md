@@ -99,12 +99,13 @@ Astro 5.0 SSG website for a premium global digital media streaming service. Buil
 - **Framework**: Astro 5.x (Static Site Generation)
 - **Styling**: Tailwind CSS 3.x with custom dark theme (deep blacks, navy blues, brand accent #3B82F6)
 - **Typography**: Inter font family
-- **Architecture**: `.astro` files for layouts, pages, and static sections. React islands (`client:load`) only for MobileMenu and FaqAccordion
-- **i18n**: Astro 5 built-in i18n with subdirectory routing. Default locale `en` (no prefix), Nordic locales: `da`, `no`, `sv`, `fi`, `is` (prefixed). Translations in `src/i18n/translations.ts`. Layout injects dynamic hreflang tags for all 6 locales + x-default.
+- **Architecture**: `.astro` files for layouts, pages, and static sections. React islands (`client:load`) only for MobileMenu and FaqAccordion. All components accept `locale` prop and pull text from `t()` dictionary. React islands receive translated strings as props from Astro parents (SSG-translated at build time)
+- **i18n**: Astro 5 built-in i18n with subdirectory routing. Default locale `en` (no prefix), Nordic locales: `da`, `no`, `sv`, `fi`, `is` (prefixed). Full centralized translation dictionary in `src/i18n/ui.ts` with `t(locale, key)` helper — covers ALL visible text (nav, hero, features, content, pricing, setup, FAQ, footer, aria labels). Locale configs and page meta in `src/i18n/translations.ts`. Layout injects dynamic hreflang tags for all 6 locales + x-default. Zero English text on Nordic pages. Pricing uses local currencies: EUR (€) for EN/FI, DKK (kr) for DA, NOK (kr) for NO, SEK (kr) for SV, ISK (kr) for IS.
 - **SEO**: Full meta tags (OG, Twitter, canonical, per-locale hreflang for all 6 versions + x-default), JSON-LD schemas (FAQPage + Service)
 - **Content Collections**: Configured for `guides` and `blog` collections (Astro Content Collections)
 - **Structure**:
-  - `src/i18n/translations.ts` — centralized locale configs, hero translations, page meta for all 6 locales
+  - `src/i18n/ui.ts` — comprehensive translation dictionary for all UI text across all 6 locales, with `t(locale, key)` helper function
+  - `src/i18n/translations.ts` — locale configs (code, label, hreflang, ogLocale), page meta (title/description) for all 6 locales
   - `src/layouts/Layout.astro` — base HTML layout with SEO head, optional `schema` prop for per-page JSON-LD, `noIndex` prop, `locale` prop for i18n
   - `src/layouts/LegalLayout.astro` — legal page layout with WebPage schema, breadcrumbs, prose styling
   - `src/layouts/BlogPost.astro` — blog article layout with Article schema, related posts sidebar, CTA widget

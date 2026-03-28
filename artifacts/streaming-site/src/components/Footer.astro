@@ -1,10 +1,21 @@
 ---
+import type { Locale } from '../i18n/translations';
+import { getLocalePath } from '../i18n/translations';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const basePath = getLocalePath(locale);
+const copyright = t(locale, 'footer.copyright').replace('{year}', String(new Date().getFullYear()));
 ---
 <footer class="relative border-t border-white/[0.06] bg-dark-950" role="contentinfo">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
       <div class="col-span-2 md:col-span-1">
-        <a href="/" class="flex items-center gap-2.5 mb-4" aria-label="StreamVault Home">
+        <a href={basePath} class="flex items-center gap-2.5 mb-4" aria-label={t(locale, 'aria.home')}>
           <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shadow-lg shadow-brand-500/25">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -12,44 +23,44 @@
           </div>
           <span class="text-xl font-bold text-white">Stream<span class="text-brand-400">Vault</span></span>
         </a>
-        <p class="text-sm text-slate-500 leading-relaxed">The ultimate 4K streaming experience. Access 20,000+ global channels on any device.</p>
+        <p class="text-sm text-slate-500 leading-relaxed">{t(locale, 'footer.tagline')}</p>
       </div>
 
       <div>
-        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Product</h4>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">{t(locale, 'footer.product')}</h4>
         <ul class="space-y-3" role="list">
-          <li><a href="/#features" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Features</a></li>
-          <li><a href="/#pricing" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Pricing</a></li>
-          <li><a href="/#content" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Content Library</a></li>
-          <li><a href="/#setup" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Installation Guide</a></li>
+          <li><a href={`${basePath}#features`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.features')}</a></li>
+          <li><a href={`${basePath}#pricing`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.pricing')}</a></li>
+          <li><a href={`${basePath}#content`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.contentLibrary')}</a></li>
+          <li><a href={`${basePath}#setup`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.installGuide')}</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Support</h4>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">{t(locale, 'footer.support')}</h4>
         <ul class="space-y-3" role="list">
-          <li><a href="/#faq" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">FAQ</a></li>
-          <li><a href="/device-setup" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Device Setup</a></li>
-          <li><a href="/troubleshooting" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Troubleshooting</a></li>
-          <li><a href="/blog" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Blog</a></li>
+          <li><a href={`${basePath}#faq`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.faq')}</a></li>
+          <li><a href="/device-setup" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.deviceSetup')}</a></li>
+          <li><a href="/troubleshooting" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.troubleshooting')}</a></li>
+          <li><a href="/blog" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.blog')}</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Legal</h4>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">{t(locale, 'footer.legal')}</h4>
         <ul class="space-y-3" role="list">
-          <li><a href="/terms" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Terms of Service</a></li>
-          <li><a href="/privacy" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Privacy Policy</a></li>
-          <li><a href="/dmca" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">DMCA Policy</a></li>
-          <li><a href="/cookies" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">Cookie Policy</a></li>
+          <li><a href="/terms" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.terms')}</a></li>
+          <li><a href="/privacy" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.privacy')}</a></li>
+          <li><a href="/dmca" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.dmca')}</a></li>
+          <li><a href="/cookies" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.cookies')}</a></li>
         </ul>
       </div>
     </div>
 
     <div class="mt-12 pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-slate-500">&copy; {new Date().getFullYear()} StreamVault. All rights reserved.</p>
+      <p class="text-sm text-slate-500" set:html={copyright}></p>
       <div class="flex items-center gap-6">
-        <span class="text-xs text-slate-600">Serving UK &amp; France</span>
+        <span class="text-xs text-slate-600">{t(locale, 'footer.serving')}</span>
       </div>
     </div>
   </div>
@@ -60,7 +71,7 @@
   target="_blank"
   rel="noopener noreferrer"
   class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25d366] flex items-center justify-center shadow-lg shadow-green-500/30 hover:scale-110 hover:shadow-green-500/50 transition-all duration-200"
-  aria-label="Contact us on WhatsApp for instant support"
+  aria-label={t(locale, 'aria.whatsapp')}
 >
   <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>

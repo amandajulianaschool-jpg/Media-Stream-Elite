@@ -1,0 +1,27 @@
+Act as a Senior i18n Engineer. The previous translation was only partial. I need a FULL website localization for all 6 languages (EN, DA, NO, SV, FI, IS). 
+
+### 1. Centralized Translation Dictionary:
+- Create a directory `src/i18n/` with a `ui.ts` (or JSON files) containing the FULL dictionary for every piece of text on the website.
+- The dictionary MUST include keys for:
+    - **Navigation:** Home, Features, Content, Pricing, Setup, FAQ, Join Now.
+    - **Content Sections:** Live Sports, Latest Movies, Trending Series, All categories (Premier League, NBA, etc.).
+    - **Pricing Table:** Plan names, Prices (in local currency: DKK, NOK, SEK, EUR), "Best Value", "Month", features list.
+    - **Installation Guide:** All 3 steps description.
+    - **FAQ:** All questions and answers.
+    - **Footer:** All links (Terms, Privacy, DMCA) and copyright text.
+
+### 2. Implementation Logic:
+- Update all Astro components (Header, Hero, Features, Pricing, Footer) to pull text dynamically from this dictionary based on the current `{lang}` from the URL.
+- Use Astro's `getRelativeLocaleUrl` for all internal links to ensure that when a user is in the Finnish version (/fi/), clicking "Pricing" keeps them in the Finnish version (/fi/pricing).
+
+### 3. Native Nordic Content (Must provide full translations):
+Ensure the following sections are accurately translated:
+- **Finnish (fi):** Header "Hinnasto", Footer "Käyttöehdot", Section "Suorat Urheilulähetykset".
+- **Danish (da):** Header "Priser", Footer "Vilkår for brug", Section "Direkte Sport".
+- **Swedish (sv):** Header "Prissättning", Footer "Användarvillkor", Section "Livesport".
+- **Norwegian (no):** Header "Priser", Footer "Vilkår for bruk", Section "Direkte Sport".
+- **Icelandic (is):** Header "Verðskrá", Footer "Notkunarskilmálar", Section "Bein útsending íþrótta".
+
+### 4. Technical Goal:
+- NO English text should remain visible when a Nordic language is selected.
+- All pricing must reflect local Nordic currency symbols where applicable (e.g., DKK for Denmark, NOK for Norway, SEK for Sweden, EUR for Finland).

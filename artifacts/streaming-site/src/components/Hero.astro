@@ -1,13 +1,12 @@
 ---
-import type { HeroTranslations, Locale } from '../i18n/translations';
-import { heroTranslations } from '../i18n/translations';
+import type { Locale } from '../i18n/translations';
+import { t } from '../i18n/ui';
 
 interface Props {
   locale?: Locale;
 }
 
 const { locale = 'en' } = Astro.props;
-const t = heroTranslations[locale] || heroTranslations.en;
 ---
 <section class="relative min-h-screen flex items-center pt-16 overflow-hidden" aria-labelledby="hero-heading">
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -20,52 +19,52 @@ const t = heroTranslations[locale] || heroTranslations.en;
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-medium mb-8 backdrop-blur-sm">
       <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
-      {t.badge}
+      {t(locale, 'hero.badge')}
     </div>
 
     <h1 id="hero-heading" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6">
-      <span class="block text-white">{t.h1Line1}</span>
-      <span class="block bg-gradient-to-r from-white via-brand-300 to-brand-500 bg-clip-text text-transparent">{t.h1Line2}</span>
-      <span class="block text-white mt-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">{t.h1Line3}</span>
+      <span class="block text-white">{t(locale, 'hero.h1Line1')}</span>
+      <span class="block bg-gradient-to-r from-white via-brand-300 to-brand-500 bg-clip-text text-transparent">{t(locale, 'hero.h1Line2')}</span>
+      <span class="block text-white mt-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">{t(locale, 'hero.h1Line3')}</span>
     </h1>
 
     <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed mb-10">
-      {t.subtitlePrefix} <strong class="text-white font-semibold">{t.subtitleHighlight}</strong>{t.subtitleSuffix}
+      {t(locale, 'hero.subtitlePrefix')} <strong class="text-white font-semibold">{t(locale, 'hero.subtitleHighlight')}</strong>{t(locale, 'hero.subtitleSuffix')}
     </p>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
       <a href="#pricing" class="inline-flex items-center gap-2 px-8 py-4 bg-brand-500 hover:bg-brand-400 text-white text-lg font-bold rounded-xl transition-all duration-200 shadow-xl shadow-brand-500/30 hover:shadow-brand-400/50 hover:scale-105 animate-pulse-glow">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        {t.ctaPrimary}
+        {t(locale, 'hero.ctaPrimary')}
       </a>
       <a href="#features" class="inline-flex items-center gap-2 px-8 py-4 border border-white/10 text-slate-300 hover:text-white hover:bg-white/5 hover:border-white/20 rounded-xl transition-all duration-200 text-lg font-medium">
-        {t.ctaSecondary}
+        {t(locale, 'hero.ctaSecondary')}
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
       </a>
     </div>
 
     <div class="max-w-3xl mx-auto">
-      <p class="text-xs uppercase tracking-widest text-slate-500 mb-6 font-medium">{t.devicesLabel}</p>
+      <p class="text-xs uppercase tracking-widest text-slate-500 mb-6 font-medium">{t(locale, 'hero.devicesLabel')}</p>
       <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
         <div class="flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-          <span class="text-xs text-slate-500 font-medium">Firestick</span>
+          <span class="text-xs text-slate-500 font-medium">{t(locale, 'hero.firestick')}</span>
         </div>
         <div class="flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-          <span class="text-xs text-slate-500 font-medium">Apple TV</span>
+          <span class="text-xs text-slate-500 font-medium">{t(locale, 'hero.appleTV')}</span>
         </div>
         <div class="flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-          <span class="text-xs text-slate-500 font-medium">Android</span>
+          <span class="text-xs text-slate-500 font-medium">{t(locale, 'hero.android')}</span>
         </div>
         <div class="flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-          <span class="text-xs text-slate-500 font-medium">Smart TV</span>
+          <span class="text-xs text-slate-500 font-medium">{t(locale, 'hero.smartTV')}</span>
         </div>
         <div class="flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
-          <span class="text-xs text-slate-500 font-medium">Web Browser</span>
+          <span class="text-xs text-slate-500 font-medium">{t(locale, 'hero.webBrowser')}</span>
         </div>
       </div>
     </div>
