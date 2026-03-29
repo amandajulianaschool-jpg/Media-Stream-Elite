@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://streamvault.tv',
+  site: 'https://www.streamvault.com',
   output: 'static',
   i18n: {
     defaultLocale: 'en',
@@ -16,7 +16,19 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind(),
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          da: 'da',
+          no: 'no',
+          sv: 'sv',
+          fi: 'fi',
+          is: 'is',
+        },
+      },
+    }),
   ],
   server: {
     host: '0.0.0.0',

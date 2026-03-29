@@ -25,7 +25,7 @@ export function getLocalePath(locale: Locale): string {
 }
 
 export function getLocaleUrl(locale: Locale): string {
-  return locale === 'en' ? 'https://streamvault.tv/' : `https://streamvault.tv/${locale}/`;
+  return locale === 'en' ? 'https://www.streamvault.com/' : `https://www.streamvault.com/${locale}/`;
 }
 
 export function getRelativeLocaleUrl(locale: Locale, path: string): string {
