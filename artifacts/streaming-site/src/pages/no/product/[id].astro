@@ -1,0 +1,26 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ProductDetail from '../../../components/ProductDetail.astro';
+import { t } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { id: '1-month' } },
+    { params: { id: '3-months' } },
+    { params: { id: '6-months' } },
+    { params: { id: '12-months' } },
+  ];
+}
+
+const locale = 'no' as const;
+const { id } = Astro.params;
+---
+<Layout locale={locale} title={`${t(locale, 'product.title')} — StreamVault`} description={`StreamVault ${t(locale, 'pricing.' + (id === '1-month' ? 'monthly' : id === '3-months' ? '3months' : id === '6-months' ? '6months' : '12months'))}`}>
+  <Header locale={locale} />
+  <main>
+    <ProductDetail locale={locale} planId={id!} />
+  </main>
+  <Footer locale={locale} />
+</Layout>

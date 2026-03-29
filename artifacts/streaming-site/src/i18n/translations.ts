@@ -28,6 +28,11 @@ export function getLocaleUrl(locale: Locale): string {
   return locale === 'en' ? 'https://streamvault.tv/' : `https://streamvault.tv/${locale}/`;
 }
 
+export function getRelativeLocaleUrl(locale: Locale, path: string): string {
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return locale === 'en' ? `/${cleanPath}` : `/${locale}/${cleanPath}`;
+}
+
 export interface HeroTranslations {
   badge: string;
   h1Line1: string;

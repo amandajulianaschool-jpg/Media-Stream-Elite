@@ -115,6 +115,8 @@ Astro 5.0 SSG website for a premium global digital media streaming service. Buil
   - `src/pages/sv/index.astro` — Swedish landing page
   - `src/pages/fi/index.astro` — Finnish landing page
   - `src/pages/is/index.astro` — Icelandic landing page
+  - `src/pages/product/[id].astro` — Product detail pages (1-month, 3-months, 6-months, 12-months)
+  - `src/pages/{da,no,sv,fi,is}/product/[id].astro` — Locale-specific product detail pages
   - `src/pages/terms.astro` — Terms of Service
   - `src/pages/privacy.astro` — Privacy Policy (GDPR compliant UK/FR)
   - `src/pages/dmca.astro` — DMCA Policy
@@ -123,7 +125,7 @@ Astro 5.0 SSG website for a premium global digital media streaming service. Buil
   - `src/pages/troubleshooting.astro` — FAQ-style troubleshooting (uses React accordion island)
   - `src/pages/blog/index.astro` — Blog grid index page
   - `src/pages/blog/[...slug].astro` — Dynamic blog post routing
-  - `src/components/*.astro` — static Astro components (Header, Hero, Features, ContentShowcase, Pricing, Setup, Faq, Footer, Breadcrumbs)
+  - `src/components/*.astro` — static Astro components (Header, Hero, Features, ContentShowcase, Pricing, ProductDetail, Setup, Faq, Footer, Breadcrumbs)
   - `src/components/react/*.tsx` — React islands (MobileMenu, FaqAccordion, TroubleshootingAccordion)
   - `src/content/guides/` — guides content collection
   - `src/content/blog/` — blog content collection (4 posts: welcome, VPN guide, Firestick setup, Premier League)
