@@ -13,35 +13,38 @@ const { locale = 'en' } = Astro.props;
     <img
       src="/images/hero-bg.png"
       alt=""
-      class="absolute inset-0 w-full h-full object-cover opacity-[0.38] contrast-[1.15] saturate-[1.1]"
+      class="absolute inset-0 w-full h-full object-cover opacity-60 contrast-[1.2] saturate-[1.1] brightness-[0.85]"
       loading="eager"
       decoding="async"
       fetchpriority="high"
     />
   </div>
 
-  <div class="absolute inset-0 z-[1] bg-gradient-to-b from-[#030712]/85 via-[#030712]/40 to-[#030712]/80 pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#030712]/80 via-[#030712]/30 to-[#030712]/75"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_45%,rgba(3,7,18,0.55),transparent)]"></div>
+  </div>
 
   <div class="absolute inset-0 z-[2] pointer-events-none" aria-hidden="true">
     <div class="absolute inset-0 bg-gradient-to-b from-brand-500/10 via-transparent to-transparent"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[600px] bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.12),transparent)]"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[600px] bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.15),transparent)]"></div>
     <div class="absolute top-1/4 right-0 w-96 h-96 bg-brand-500/5 rounded-full blur-3xl"></div>
     <div class="absolute bottom-1/4 left-0 w-72 h-72 bg-brand-600/5 rounded-full blur-3xl"></div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-medium mb-8 backdrop-blur-sm">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/15 border border-brand-500/25 text-brand-400 text-sm font-medium mb-8 backdrop-blur-md">
       <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
       {t(locale, 'hero.badge')}
     </div>
 
     <h1 id="hero-heading" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6">
-      <span class="block text-white drop-shadow-lg">{t(locale, 'hero.h1Line1')}</span>
-      <span class="block bg-gradient-to-r from-white via-brand-300 to-brand-500 bg-clip-text text-transparent drop-shadow-lg">{t(locale, 'hero.h1Line2')}</span>
-      <span class="block text-white mt-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl drop-shadow-lg">{t(locale, 'hero.h1Line3')}</span>
+      <span class="block text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.8),0_4px_20px_rgba(0,0,0,0.5)]">{t(locale, 'hero.h1Line1')}</span>
+      <span class="block bg-gradient-to-r from-white via-brand-300 to-brand-400 bg-clip-text text-transparent [filter:drop-shadow(0_2px_10px_rgba(0,0,0,0.8))]">{t(locale, 'hero.h1Line2')}</span>
+      <span class="block text-white mt-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl [text-shadow:0_2px_10px_rgba(0,0,0,0.8),0_4px_20px_rgba(0,0,0,0.5)]">{t(locale, 'hero.h1Line3')}</span>
     </h1>
 
-    <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed mb-10">
+    <p class="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 leading-relaxed mb-10 [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
       {t(locale, 'hero.subtitlePrefix')} <strong class="text-white font-semibold">{t(locale, 'hero.subtitleHighlight')}</strong>{t(locale, 'hero.subtitleSuffix')}
     </p>
 
