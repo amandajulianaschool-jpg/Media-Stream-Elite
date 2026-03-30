@@ -1,14 +1,14 @@
 ---
 import type { Locale } from '../i18n/translations';
 import { t } from '../i18n/ui';
+import { getWhatsAppTrialLink } from '../i18n/whatsapp';
 
 interface Props {
   locale?: Locale;
 }
 
 const { locale = 'en' } = Astro.props;
-const whatsappMsg = encodeURIComponent(t(locale, 'trial.whatsappMsg'));
-const whatsappUrl = `https://wa.me/447000000000?text=${whatsappMsg}`;
+const whatsappUrl = getWhatsAppTrialLink(locale);
 ---
 <section id="free-trial" class="relative py-20 md:py-28" aria-labelledby="trial-heading">
   <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-500/[0.03] to-transparent pointer-events-none" aria-hidden="true"></div>
