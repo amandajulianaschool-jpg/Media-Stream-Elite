@@ -233,3 +233,61 @@ export const setupPageMeta: Record<Locale, PageMeta> = {
     description: 'Settu upp StreamVault á nokkrum mínútum. Einföld 3-skrefa uppsetningarleiðbeining fyrir Firestick, Apple TV, Android, Smart-sjónvörp og öll tæki. Samstundis virkjun eftir áskrift.',
   },
 };
+
+export const featuresPageMeta: Record<Locale, PageMeta> = {
+  en: {
+    title: 'StreamVault Features – Anti-Freeze Technology, 4K Streaming & 20,000+ Channels',
+    description: 'Discover StreamVault features: Anti-Freeze buffering elimination, 4K Ultra HD quality, 20,000+ live channels, multi-device support, instant activation, and 24/7 customer support.',
+  },
+  da: {
+    title: 'StreamVault Funktioner – Anti-Freeze Teknologi, 4K Streaming & 20.000+ Kanaler',
+    description: 'Opdag StreamVault-funktioner: Anti-Freeze bufferingseliminering, 4K Ultra HD kvalitet, 20.000+ live kanaler, multi-enhedssupport, øjeblikkelig aktivering og 24/7 kundesupport.',
+  },
+  no: {
+    title: 'StreamVault Funksjoner – Anti-Freeze-teknologi, 4K Strømming & 20 000+ Kanaler',
+    description: 'Oppdag StreamVault-funksjoner: Anti-Freeze bufringseliminering, 4K Ultra HD-kvalitet, 20 000+ live kanaler, multi-enhetsstøtte, umiddelbar aktivering og 24/7 kundestøtte.',
+  },
+  sv: {
+    title: 'StreamVault Funktioner – Anti-Freeze-teknik, 4K Streaming & 20 000+ Kanaler',
+    description: 'Upptäck StreamVault-funktioner: Anti-Freeze buffringseliminering, 4K Ultra HD-kvalitet, 20 000+ livekanaler, stöd för flera enheter, omedelbar aktivering och 24/7 kundsupport.',
+  },
+  fi: {
+    title: 'StreamVault Ominaisuudet – Anti-Freeze-tekniikka, 4K-Suoratoisto & 20 000+ Kanavaa',
+    description: 'Tutustu StreamVault-ominaisuuksiin: Anti-Freeze-puskuroinninesto, 4K Ultra HD -laatu, 20 000+ live-kanavaa, monilaitteinen tuki, välitön aktivointi ja 24/7 asiakastuki.',
+  },
+  is: {
+    title: 'StreamVault Eiginleikar – Anti-Freeze Tækni, 4K Streymi & 20.000+ Rásir',
+    description: 'Uppgötvaðu StreamVault eiginleika: Anti-Freeze biðminnaútrýming, 4K Ultra HD gæði, 20.000+ beinar rásir, fjöltækjastuðningur, samstundis virkjun og 24/7 þjónustuver.',
+  },
+};
+
+export const faqPageMeta: Record<Locale, PageMeta> = {
+  en: {
+    title: 'StreamVault FAQ – Frequently Asked Questions About 4K Streaming Service',
+    description: 'Find answers to common questions about StreamVault: supported devices, VPN compatibility, free trial, simultaneous connections, Anti-Freeze Technology, and instant activation.',
+  },
+  da: {
+    title: 'StreamVault FAQ – Ofte Stillede Spørgsmål om 4K Streamingtjeneste',
+    description: 'Find svar på almindelige spørgsmål om StreamVault: understøttede enheder, VPN-kompatibilitet, gratis prøveperiode, samtidige forbindelser, Anti-Freeze Teknologi og øjeblikkelig aktivering.',
+  },
+  no: {
+    title: 'StreamVault FAQ – Ofte Stilte Spørsmål om 4K Strømmetjeneste',
+    description: 'Finn svar på vanlige spørsmål om StreamVault: støttede enheter, VPN-kompatibilitet, gratis prøveperiode, samtidige tilkoblinger, Anti-Freeze-teknologi og umiddelbar aktivering.',
+  },
+  sv: {
+    title: 'StreamVault FAQ – Vanliga Frågor om 4K-Streamingtjänst',
+    description: 'Hitta svar på vanliga frågor om StreamVault: enheter som stöds, VPN-kompatibilitet, gratis provperiod, samtidiga anslutningar, Anti-Freeze-teknik och omedelbar aktivering.',
+  },
+  fi: {
+    title: 'StreamVault UKK – Usein Kysytyt Kysymykset 4K-Suoratoistopalvelusta',
+    description: 'Löydä vastauksia yleisiin kysymyksiin StreamVaultista: tuetut laitteet, VPN-yhteensopivuus, ilmainen kokeilu, samanaikaiset yhteydet, Anti-Freeze-tekniikka ja välitön aktivointi.',
+  },
+  is: {
+    title: 'StreamVault FAQ – Algengar Spurningar um 4K Streymisþjónustu',
+    description: 'Finndu svör við algengum spurningum um StreamVault: studd tæki, VPN samhæfni, ókeypis prufutímabil, samtímis tengingar, Anti-Freeze tækni og samstundis virkjun.',
+  },
+};
+
+export function getSubpageSwitcherUrl(locale: Locale, subpage: string): string {
+  return getRelativeLocaleUrl(locale, `/${subpage}`);
+}

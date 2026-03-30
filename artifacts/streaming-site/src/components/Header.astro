@@ -5,22 +5,37 @@ import { t } from '../i18n/ui';
 
 interface Props {
   locale?: Locale;
+  currentPath?: string;
 }
 
-const { locale = 'en' } = Astro.props;
+const { locale = 'en', currentPath } = Astro.props;
 const currentLocale = allLocalesList.find(l => l.code === locale) || allLocalesList[0];
 const otherLocales = allLocalesList.filter(l => l.code !== locale);
 
-const navLinks = [
-  { label: t(locale, 'nav.features'), href: getRelativeLocaleUrl(locale, '/#features') },
-  { label: t(locale, 'nav.content'), href: getRelativeLocaleUrl(locale, '/content') },
-  { label: t(locale, 'nav.pricing'), href: getRelativeLocaleUrl(locale, '/pricing') },
-  { label: t(locale, 'nav.setup'), href: getRelativeLocaleUrl(locale, '/setup') },
-  { label: t(locale, 'nav.faq'), href: getRelativeLocaleUrl(locale, '/#faq') },
-];
+const pathname = currentPath || Astro.url.pathname;
+const homePaths = ['/', ...allLocalesList.map(l => `/${l.code}/`), ...allLocalesList.map(l => `/${l.code}`)];
+const isHomePage = homePaths.includes(pathname);
+
+const sections = ['features', 'content', 'pricing', 'setup', 'faq'] as const;
+const navKeys = {
+  features: 'nav.features',
+  content: 'nav.content',
+  pricing: 'nav.pricing',
+  setup: 'nav.setup',
+  faq: 'nav.faq',
+} as const;
+
+const navLinks = sections.map(section => ({
+  label: t(locale, navKeys[section]),
+  href: isHomePage ? `#${section}` : getRelativeLocaleUrl(locale, `/${section}`),
+}));
 
 const mobileNavLinks = navLinks.map(l => ({ label: l.label, href: l.href }));
-const choosePlanHref = getRelativeLocaleUrl(locale, '/pricing');
+const choosePlanHref = isHomePage ? '#pricing' : getRelativeLocaleUrl(locale, '/pricing');
+
+const subpage = pathname.replace(/^\//, '').replace(/\/$/, '');
+const subpageName = subpage.split('/').pop() || '';
+const localeAwareSubpage = ['features', 'content', 'pricing', 'setup', 'faq'].includes(subpageName) ? subpageName : '';
 ---
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" role="banner">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-18 flex items-center justify-between" aria-label="Main navigation">
@@ -62,7 +77,7 @@ const choosePlanHref = getRelativeLocaleUrl(locale, '/pricing');
           aria-label="Language options"
         >
           <a
-            href={getLocalePath(locale)}
+            href={localeAwareSubpage ? getRelativeLocaleUrl(locale, `/${localeAwareSubpage}`) : getLocalePath(locale)}
             class="flex items-center gap-2.5 px-3.5 py-2 text-sm text-brand-400 font-medium bg-brand-500/10"
             role="menuitem"
             aria-current="true"
@@ -73,7 +88,7 @@ const choosePlanHref = getRelativeLocaleUrl(locale, '/pricing');
           </a>
           {otherLocales.map(l => (
             <a
-              href={getLocalePath(l.code)}
+              href={localeAwareSubpage ? getRelativeLocaleUrl(l.code, `/${localeAwareSubpage}`) : getLocalePath(l.code)}
               class="flex items-center gap-2.5 px-3.5 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
               role="menuitem"
             >
@@ -114,20 +129,14 @@ const choosePlanHref = getRelativeLocaleUrl(locale, '/pricing');
     lastScroll = scrollY;
   }, { passive: true });
 
-  document.querySelectorAll('a[href^="#"], a[href*="/#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (!href) return;
-      const hashIndex = href.indexOf('#');
-      if (hashIndex === -1) return;
-      const hash = href.slice(hashIndex);
-      const isLocalHash = href.startsWith('#') || href.includes(window.location.pathname + '#') || (href.includes('/#') && window.location.pathname === href.slice(0, hashIndex).replace(/\/$/, '') + '/') || (href.includes('/#') && window.location.pathname === href.slice(0, hashIndex));
-      if (isLocalHash || window.location.pathname.replace(/\/$/, '') === href.slice(0, hashIndex).replace(/\/$/, '')) {
-        const target = document.querySelector(hash);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
+      if (!href || !href.startsWith('#')) return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });

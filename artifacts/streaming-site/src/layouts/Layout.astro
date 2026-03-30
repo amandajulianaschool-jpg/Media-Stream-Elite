@@ -28,6 +28,19 @@ const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow, max-image-
 const localeCodes = allLocalesList.map(l => l.code);
 const pathname = Astro.url.pathname;
 const isLocaleHomePage = pathname === '/' || localeCodes.some(c => pathname === `/${c}/` || pathname === `/${c}`);
+
+const subpageNames = ['features', 'content', 'pricing', 'setup', 'faq'];
+const cleanPath = pathname.replace(/^\//, '').replace(/\/$/, '');
+const segments = cleanPath.split('/');
+const subpageName = segments.length === 1 ? segments[0] : (segments.length === 2 && localeCodes.includes(segments[0]) ? segments[1] : '');
+const isSubpage = subpageNames.includes(subpageName);
+
+function getHreflangUrl(loc: string, page?: string): string {
+  const base = 'https://www.streamvault.com';
+  const prefix = loc === 'en' ? '' : `/${loc}`;
+  if (page) return `${base}${prefix}/${page}/`;
+  return `${base}${prefix}/`;
+}
 ---
 <!doctype html>
 <html lang={localeConfig.htmlLang} class="dark">
@@ -41,10 +54,10 @@ const isLocaleHomePage = pathname === '/' || localeCodes.some(c => pathname === 
     <meta name="robots" content={robotsContent} />
 
     <link rel="canonical" href={canonical} />
-    {isLocaleHomePage && allLocalesList.map(l => (
-      <link rel="alternate" hreflang={l.hreflang} href={getLocaleUrl(l.code)} />
+    {(isLocaleHomePage || isSubpage) && allLocalesList.map(l => (
+      <link rel="alternate" hreflang={l.hreflang} href={getHreflangUrl(l.code, isSubpage ? subpageName : undefined)} />
     ))}
-    {isLocaleHomePage && <link rel="alternate" hreflang="x-default" href="https://streamvault.tv/" />}
+    {(isLocaleHomePage || isSubpage) && <link rel="alternate" hreflang="x-default" href={getHreflangUrl('en', isSubpage ? subpageName : undefined)} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta property="og:title" content={title} />

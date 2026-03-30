@@ -102,13 +102,13 @@ Astro 5.0 SSG website for a premium global digital media streaming service. Buil
 - **Architecture**: `.astro` files for layouts, pages, and static sections. React islands (`client:load`) only for MobileMenu and FaqAccordion. All components accept `locale` prop and pull text from `t()` dictionary. React islands receive translated strings as props from Astro parents (SSG-translated at build time)
 - **Pricing**: 4-tier system — Trial (1M, €12.99, 1 device, 60k VOD, AF Standard), Starter (3M, €26.99, 1 device, 65k VOD, AF Premium, save 30%), Pro (6M, €44.99, 2 devices, 70k VOD, AF Elite, save 42%), Ultimate (12M, €69.99, 3 devices, 80k VOD, AF Ultra, save 55%). Nordic locales use local currency (DKK/NOK/SEK/ISK kr). ProductDetail.astro uses fully localized keys for VOD count, Anti-Freeze level, and support tier.
 - **Free Trial**: FreeTrial.astro component with glassmorphic card, green CTA, WhatsApp pre-filled URL via `trial.*` translation keys
-- **Navigation**: Header uses absolute localized URLs (`getRelativeLocaleUrl`) for Content, Pricing, Setup pages; Features and FAQ use homepage hash links (`/#features`, `/#faq`). "Choose Plan" button (`nav.choosePlan` key) links to `/pricing` with Electric Blue gradient. MobileMenu handles both hash scrolling and full page navigation.
+- **Navigation**: Hybrid conditional routing — Header detects `isHomePage` via `Astro.url.pathname` and uses hash anchor links (`#features`, `#pricing`, etc.) on homepage for smooth scrolling, and absolute localized standalone page URLs (`/features`, `/sv/features`, etc.) on all subpages. Footer ALWAYS uses standalone page links as a global SEO directory. "Choose Plan" button (`nav.choosePlan` key) links to `/pricing` (or `#pricing` on homepage) with Electric Blue gradient. Language switcher preserves current page on subpages (e.g., `/sv/faq` → `/da/faq`). MobileMenu handles both hash scrolling and full page navigation.
 - **i18n**: Astro 5 built-in i18n with subdirectory routing. Default locale `en` (no prefix), Nordic locales: `da`, `no`, `sv`, `fi`, `is` (prefixed). Full centralized translation dictionary in `src/i18n/ui.ts` with `t(locale, key)` helper — covers ALL visible text (nav, hero, features, content, pricing, setup, FAQ, footer, aria labels). Locale configs and page meta in `src/i18n/translations.ts`. Layout injects dynamic hreflang tags for all 6 locales + x-default. Zero English text on Nordic pages. Pricing uses local currencies: EUR (€) for EN/FI, DKK (kr) for DA, NOK (kr) for NO, SEK (kr) for SV, ISK (kr) for IS.
 - **SEO**: Full meta tags (OG, Twitter, canonical, per-locale hreflang for all 6 versions + x-default), JSON-LD schemas (FAQPage + Service), automated XML sitemap via `@astrojs/sitemap` with i18n hreflang alternates, `robots.txt` pointing to `sitemap-index.xml`
 - **Content Collections**: Configured for `guides` and `blog` collections (Astro Content Collections)
 - **Structure**:
   - `src/i18n/ui.ts` — comprehensive translation dictionary for all UI text across all 6 locales, with `t(locale, key)` helper function
-  - `src/i18n/translations.ts` — locale configs (code, label, hreflang, ogLocale), page meta (title/description) for all 6 locales + dedicated `pricingPageMeta`, `contentPageMeta`, `setupPageMeta` for standalone SEO pages
+  - `src/i18n/translations.ts` — locale configs (code, label, hreflang, ogLocale), page meta (title/description) for all 6 locales + dedicated `featuresPageMeta`, `contentPageMeta`, `pricingPageMeta`, `setupPageMeta`, `faqPageMeta` for standalone SEO pages
   - `src/layouts/Layout.astro` — base HTML layout with SEO head, optional `schema` prop for per-page JSON-LD, `noIndex` prop, `locale` prop for i18n
   - `src/layouts/LegalLayout.astro` — legal page layout with WebPage schema, breadcrumbs, prose styling
   - `src/layouts/BlogPost.astro` — blog article layout with Article schema, related posts sidebar, CTA widget
@@ -118,12 +118,16 @@ Astro 5.0 SSG website for a premium global digital media streaming service. Buil
   - `src/pages/sv/index.astro` — Swedish landing page
   - `src/pages/fi/index.astro` — Finnish landing page
   - `src/pages/is/index.astro` — Icelandic landing page
+  - `src/pages/features.astro` — Standalone features page (reuses Features component)
   - `src/pages/pricing.astro` — Standalone pricing page (SEO-optimized, reuses Pricing + FreeTrial components)
   - `src/pages/content.astro` — Standalone content library page (reuses ContentShowcase)
   - `src/pages/setup.astro` — Standalone setup guide page (reuses Setup)
+  - `src/pages/faq.astro` — Standalone FAQ page (reuses Faq, includes FAQPage JSON-LD schema)
+  - `src/pages/{da,no,sv,fi,is}/features.astro` — Locale-specific standalone features pages
   - `src/pages/{da,no,sv,fi,is}/pricing.astro` — Locale-specific standalone pricing pages
   - `src/pages/{da,no,sv,fi,is}/content.astro` — Locale-specific standalone content pages
   - `src/pages/{da,no,sv,fi,is}/setup.astro` — Locale-specific standalone setup pages
+  - `src/pages/{da,no,sv,fi,is}/faq.astro` — Locale-specific standalone FAQ pages (with FAQPage JSON-LD schema)
   - `src/pages/product/[id].astro` — Product detail pages (1-month, 3-months, 6-months, 12-months)
   - `src/pages/{da,no,sv,fi,is}/product/[id].astro` — Locale-specific product detail pages
   - `src/pages/terms.astro` — Terms of Service
