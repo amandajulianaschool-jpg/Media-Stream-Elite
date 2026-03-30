@@ -20,7 +20,7 @@ const defaultFaqs: FaqItem[] = [
   },
   {
     question: 'Is there a free trial available?',
-    answer: 'We offer a 24-hour free trial so you can test the full service before committing to a plan. No credit card required for the trial. After the trial, choose from our Monthly, 6-Month, or 12-Month plans.',
+    answer: 'We offer a 4-hour free trial so you can test the full service before committing to a plan. No credit card required for the trial. After the trial, choose from our Monthly, 6-Month, or 12-Month plans.',
   },
   {
     question: 'How many simultaneous connections are included?',

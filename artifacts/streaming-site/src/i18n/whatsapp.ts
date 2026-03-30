@@ -1,6 +1,7 @@
 import type { Locale } from './translations';
 import { t } from './ui';
 
+export const TRIAL_DURATION = '4';
 export const WHATSAPP_NUMBER = '212631130357';
 
 export function getWhatsAppTrialLink(locale: Locale): string {

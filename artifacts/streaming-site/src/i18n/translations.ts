@@ -129,54 +129,54 @@ export interface PageMeta {
 export const pageMeta: Record<Locale, PageMeta> = {
   en: {
     title: 'StreamVault – The Ultimate 4K Global Streaming Service | 20,000+ Channels',
-    description: 'Access 20,000+ global TV channels, blockbuster movies and premium series in stunning 4K. Anti-Freeze Technology, instant activation. Try free for 24 hours.',
+    description: 'Access 20,000+ global TV channels, blockbuster movies and premium series in stunning 4K. Anti-Freeze Technology, instant activation. Try free for 4 hours.',
   },
   da: {
     title: 'StreamVault – Den Ultimative 4K Streaming Tjeneste | 20.000+ Kanaler',
-    description: 'Adgang til 20.000+ globale TV-kanaler, storfilm og premium-serier i fantastisk 4K. Anti-Freeze Teknologi, øjeblikkelig aktivering. Prøv gratis i 24 timer.',
+    description: 'Adgang til 20.000+ globale TV-kanaler, storfilm og premium-serier i fantastisk 4K. Anti-Freeze Teknologi, øjeblikkelig aktivering. Prøv gratis i 4 timer.',
   },
   no: {
     title: 'StreamVault – Den Ultimative 4K Strømmetjeneste | 20 000+ Kanaler',
-    description: 'Tilgang til 20 000+ globale TV-kanaler, storfilmer og premiumserier i fantastisk 4K. Anti-Freeze-teknologi, umiddelbar aktivering. Prøv gratis i 24 timer.',
+    description: 'Tilgang til 20 000+ globale TV-kanaler, storfilmer og premiumserier i fantastisk 4K. Anti-Freeze-teknologi, umiddelbar aktivering. Prøv gratis i 4 timer.',
   },
   sv: {
     title: 'StreamVault – Den Ultimata 4K-Streamingtjänsten | 20 000+ Kanaler',
-    description: 'Tillgång till 20 000+ globala TV-kanaler, storfilmer och premiumserier i fantastisk 4K. Anti-Freeze-teknik, omedelbar aktivering. Prova gratis i 24 timmar.',
+    description: 'Tillgång till 20 000+ globala TV-kanaler, storfilmer och premiumserier i fantastisk 4K. Anti-Freeze-teknik, omedelbar aktivering. Prova gratis i 4 timmar.',
   },
   fi: {
     title: 'StreamVault – Ylivertainen 4K-Suoratoistopalvelu | 20 000+ Kanavaa',
-    description: 'Pääsy yli 20 000 globaaliin TV-kanavaan, hittielokuviin ja premium-sarjoihin upeassa 4K-laadussa. Anti-Freeze-tekniikka, välitön aktivointi. Kokeile ilmaiseksi 24 tuntia.',
+    description: 'Pääsy yli 20 000 globaaliin TV-kanavaan, hittielokuviin ja premium-sarjoihin upeassa 4K-laadussa. Anti-Freeze-tekniikka, välitön aktivointi. Kokeile ilmaiseksi 4 tuntia.',
   },
   is: {
     title: 'StreamVault – Hin Fullkomna 4K Streymisþjónusta | 20.000+ Rásir',
-    description: 'Aðgangur að 20.000+ alþjóðlegum sjónvarpsrásum, stórmyndum og premium-þáttaröðum í glæsilegri 4K gæðum. Anti-Freeze tækni, samstundis virkjun. Prófaðu ókeypis í 24 klukkustundir.',
+    description: 'Aðgangur að 20.000+ alþjóðlegum sjónvarpsrásum, stórmyndum og premium-þáttaröðum í glæsilegri 4K gæðum. Anti-Freeze tækni, samstundis virkjun. Prófaðu ókeypis í 4 klukkustundir.',
   },
 };
 
 export const pricingPageMeta: Record<Locale, PageMeta> = {
   en: {
     title: 'StreamVault Pricing Plans – 4K Streaming from €5.83/month | Choose Your Plan',
-    description: 'Compare StreamVault subscription plans: Trial, Starter, Pro and Ultimate. 4K streaming, Anti-Freeze Technology, up to 80,000+ VOD titles. Plans from €12.99. Free 24-hour trial available.',
+    description: 'Compare StreamVault subscription plans: Trial, Starter, Pro and Ultimate. 4K streaming, Anti-Freeze Technology, up to 80,000+ VOD titles. Plans from €12.99. Free 4-hour trial available.',
   },
   da: {
     title: 'StreamVault Priser – 4K Streaming fra 519 kr/år | Vælg Din Plan',
-    description: 'Sammenlign StreamVault abonnementer: Prøve, Starter, Pro og Ultimate. 4K streaming, Anti-Freeze Teknologi, op til 80.000+ VOD-titler. Planer fra 99 kr. Gratis 24-timers prøveperiode.',
+    description: 'Sammenlign StreamVault abonnementer: Prøve, Starter, Pro og Ultimate. 4K streaming, Anti-Freeze Teknologi, op til 80.000+ VOD-titler. Planer fra 99 kr. Gratis 4-timers prøveperiode.',
   },
   no: {
     title: 'StreamVault Priser – 4K Strømming fra 779 kr/år | Velg Din Plan',
-    description: 'Sammenlign StreamVault abonnementer: Prøve, Starter, Pro og Ultimate. 4K strømming, Anti-Freeze-teknologi, opptil 80 000+ VOD-titler. Planer fra 149 kr. Gratis 24-timers prøveperiode.',
+    description: 'Sammenlign StreamVault abonnementer: Prøve, Starter, Pro og Ultimate. 4K strømming, Anti-Freeze-teknologi, opptil 80 000+ VOD-titler. Planer fra 149 kr. Gratis 4-timers prøveperiode.',
   },
   sv: {
     title: 'StreamVault Priser – 4K Streaming från 779 kr/år | Välj Din Plan',
-    description: 'Jämför StreamVault prenumerationer: Prov, Starter, Pro och Ultimate. 4K streaming, Anti-Freeze-teknik, upp till 80 000+ VOD-titlar. Planer från 149 kr. Gratis 24-timmars provperiod.',
+    description: 'Jämför StreamVault prenumerationer: Prov, Starter, Pro och Ultimate. 4K streaming, Anti-Freeze-teknik, upp till 80 000+ VOD-titlar. Planer från 149 kr. Gratis 4-timmars provperiod.',
   },
   fi: {
     title: 'StreamVault Hinnat – 4K-Suoratoisto alkaen 5,83 €/kk | Valitse Pakettisi',
-    description: 'Vertaa StreamVault-tilauksia: Kokeilu, Starter, Pro ja Ultimate. 4K-suoratoisto, Anti-Freeze-tekniikka, jopa 80 000+ VOD-nimikettä. Paketit alkaen 12,99 €. Ilmainen 24 tunnin kokeilu.',
+    description: 'Vertaa StreamVault-tilauksia: Kokeilu, Starter, Pro ja Ultimate. 4K-suoratoisto, Anti-Freeze-tekniikka, jopa 80 000+ VOD-nimikettä. Paketit alkaen 12,99 €. Ilmainen 4 tunnin kokeilu.',
   },
   is: {
     title: 'StreamVault Verðskrá – 4K Streymi frá 13.499 kr/ár | Veldu Áætlun',
-    description: 'Berðu saman StreamVault áskriftir: Prufa, Starter, Pro og Ultimate. 4K streymi, Anti-Freeze tækni, allt að 80.000+ VOD titlar. Áætlanir frá 2.499 kr. Ókeypis 24 stunda prufutímabil.',
+    description: 'Berðu saman StreamVault áskriftir: Prufa, Starter, Pro og Ultimate. 4K streymi, Anti-Freeze tækni, allt að 80.000+ VOD titlar. Áætlanir frá 2.499 kr. Ókeypis 4 stunda prufutímabil.',
   },
 };
 
