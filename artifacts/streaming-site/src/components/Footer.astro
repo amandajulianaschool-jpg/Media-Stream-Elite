@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../i18n/translations';
-import { getLocalePath } from '../i18n/translations';
+import { getLocalePath, getRelativeLocaleUrl } from '../i18n/translations';
 import { t } from '../i18n/ui';
 
 interface Props {
@@ -29,17 +29,17 @@ const copyright = t(locale, 'footer.copyright').replace('{year}', String(new Dat
       <div>
         <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">{t(locale, 'footer.product')}</h4>
         <ul class="space-y-3" role="list">
-          <li><a href={`${basePath}#features`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.features')}</a></li>
-          <li><a href={`${basePath}#pricing`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.pricing')}</a></li>
-          <li><a href={`${basePath}#content`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.contentLibrary')}</a></li>
-          <li><a href={`${basePath}#setup`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.installGuide')}</a></li>
+          <li><a href={getRelativeLocaleUrl(locale, '/#features')} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.features')}</a></li>
+          <li><a href={getRelativeLocaleUrl(locale, '/pricing')} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.pricing')}</a></li>
+          <li><a href={getRelativeLocaleUrl(locale, '/content')} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.contentLibrary')}</a></li>
+          <li><a href={getRelativeLocaleUrl(locale, '/setup')} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.installGuide')}</a></li>
         </ul>
       </div>
 
       <div>
         <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">{t(locale, 'footer.support')}</h4>
         <ul class="space-y-3" role="list">
-          <li><a href={`${basePath}#faq`} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.faq')}</a></li>
+          <li><a href={getRelativeLocaleUrl(locale, '/#faq')} class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.faq')}</a></li>
           <li><a href="/device-setup" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.deviceSetup')}</a></li>
           <li><a href="/troubleshooting" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.troubleshooting')}</a></li>
           <li><a href="/blog" class="text-sm text-slate-400 hover:text-brand-400 transition-colors">{t(locale, 'footer.blog')}</a></li>

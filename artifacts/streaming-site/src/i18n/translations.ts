@@ -152,3 +152,84 @@ export const pageMeta: Record<Locale, PageMeta> = {
     description: 'Aðgangur að 20.000+ alþjóðlegum sjónvarpsrásum, stórmyndum og premium-þáttaröðum í glæsilegri 4K gæðum. Anti-Freeze tækni, samstundis virkjun. Prófaðu ókeypis í 24 klukkustundir.',
   },
 };
+
+export const pricingPageMeta: Record<Locale, PageMeta> = {
+  en: {
+    title: 'StreamVault Pricing Plans – 4K Streaming from €5.83/month | Choose Your Plan',
+    description: 'Compare StreamVault subscription plans: Trial, Starter, Pro and Ultimate. 4K streaming, Anti-Freeze Technology, up to 80,000+ VOD titles. Plans from €12.99. Free 24-hour trial available.',
+  },
+  da: {
+    title: 'StreamVault Priser – 4K Streaming fra 519 kr/år | Vælg Din Plan',
+    description: 'Sammenlign StreamVault abonnementer: Prøve, Starter, Pro og Ultimate. 4K streaming, Anti-Freeze Teknologi, op til 80.000+ VOD-titler. Planer fra 99 kr. Gratis 24-timers prøveperiode.',
+  },
+  no: {
+    title: 'StreamVault Priser – 4K Strømming fra 779 kr/år | Velg Din Plan',
+    description: 'Sammenlign StreamVault abonnementer: Prøve, Starter, Pro og Ultimate. 4K strømming, Anti-Freeze-teknologi, opptil 80 000+ VOD-titler. Planer fra 149 kr. Gratis 24-timers prøveperiode.',
+  },
+  sv: {
+    title: 'StreamVault Priser – 4K Streaming från 779 kr/år | Välj Din Plan',
+    description: 'Jämför StreamVault prenumerationer: Prov, Starter, Pro och Ultimate. 4K streaming, Anti-Freeze-teknik, upp till 80 000+ VOD-titlar. Planer från 149 kr. Gratis 24-timmars provperiod.',
+  },
+  fi: {
+    title: 'StreamVault Hinnat – 4K-Suoratoisto alkaen 5,83 €/kk | Valitse Pakettisi',
+    description: 'Vertaa StreamVault-tilauksia: Kokeilu, Starter, Pro ja Ultimate. 4K-suoratoisto, Anti-Freeze-tekniikka, jopa 80 000+ VOD-nimikettä. Paketit alkaen 12,99 €. Ilmainen 24 tunnin kokeilu.',
+  },
+  is: {
+    title: 'StreamVault Verðskrá – 4K Streymi frá 13.499 kr/ár | Veldu Áætlun',
+    description: 'Berðu saman StreamVault áskriftir: Prufa, Starter, Pro og Ultimate. 4K streymi, Anti-Freeze tækni, allt að 80.000+ VOD titlar. Áætlanir frá 2.499 kr. Ókeypis 24 stunda prufutímabil.',
+  },
+};
+
+export const contentPageMeta: Record<Locale, PageMeta> = {
+  en: {
+    title: 'StreamVault Content Library – 20,000+ Live Channels & 80,000+ Movies & Series',
+    description: 'Explore the StreamVault content library: 20,000+ live TV channels, Premier League, Champions League, NBA, plus 80,000+ on-demand movies and series in stunning 4K quality.',
+  },
+  da: {
+    title: 'StreamVault Indholdsbibliotek – 20.000+ Live Kanaler & 80.000+ Film & Serier',
+    description: 'Udforsk StreamVault indholdsbiblioteket: 20.000+ live TV-kanaler, Premier League, Champions League, NBA, plus 80.000+ on-demand film og serier i fantastisk 4K kvalitet.',
+  },
+  no: {
+    title: 'StreamVault Innholdsbibliotek – 20 000+ Live Kanaler & 80 000+ Filmer & Serier',
+    description: 'Utforsk StreamVault innholdsbiblioteket: 20 000+ live TV-kanaler, Premier League, Champions League, NBA, pluss 80 000+ on-demand filmer og serier i fantastisk 4K kvalitet.',
+  },
+  sv: {
+    title: 'StreamVault Innehållsbibliotek – 20 000+ Livekanaler & 80 000+ Filmer & Serier',
+    description: 'Utforska StreamVault innehållsbiblioteket: 20 000+ live TV-kanaler, Premier League, Champions League, NBA, plus 80 000+ on-demand filmer och serier i fantastisk 4K kvalitet.',
+  },
+  fi: {
+    title: 'StreamVault Sisältökirjasto – 20 000+ Live-Kanavaa & 80 000+ Elokuvaa & Sarjaa',
+    description: 'Tutustu StreamVault-sisältökirjastoon: 20 000+ live TV-kanavaa, Premier League, Champions League, NBA, sekä 80 000+ tilausvideoelokuvaa ja -sarjaa upeassa 4K-laadussa.',
+  },
+  is: {
+    title: 'StreamVault Efnissafn – 20.000+ Beinar Rásir & 80.000+ Myndir & Þættir',
+    description: 'Skoðaðu StreamVault efnissafnið: 20.000+ beinar sjónvarpsrásir, Premier League, Champions League, NBA, ásamt 80.000+ on-demand myndum og þáttaröðum í glæsilegri 4K gæðum.',
+  },
+};
+
+export const setupPageMeta: Record<Locale, PageMeta> = {
+  en: {
+    title: 'StreamVault Setup Guide – Easy Installation in 3 Steps | All Devices',
+    description: 'Set up StreamVault in minutes. Simple 3-step installation guide for Firestick, Apple TV, Android, Smart TVs, and all devices. Instant activation after subscription.',
+  },
+  da: {
+    title: 'StreamVault Opsætningsguide – Nem Installation i 3 Trin | Alle Enheder',
+    description: 'Opsæt StreamVault på få minutter. Enkel 3-trins installationsguide til Firestick, Apple TV, Android, Smart TV og alle enheder. Øjeblikkelig aktivering efter tilmelding.',
+  },
+  no: {
+    title: 'StreamVault Oppsettguide – Enkel Installasjon i 3 Steg | Alle Enheter',
+    description: 'Sett opp StreamVault på minutter. Enkel 3-trinns installasjonsguide for Firestick, Apple TV, Android, Smart-TV og alle enheter. Umiddelbar aktivering etter abonnering.',
+  },
+  sv: {
+    title: 'StreamVault Installationsguide – Enkel Installation i 3 Steg | Alla Enheter',
+    description: 'Ställ in StreamVault på minuter. Enkel 3-stegs installationsguide för Firestick, Apple TV, Android, Smart-TV och alla enheter. Omedelbar aktivering efter prenumeration.',
+  },
+  fi: {
+    title: 'StreamVault Asennusopas – Helppo Asennus 3 Vaiheessa | Kaikki Laitteet',
+    description: 'Asenna StreamVault minuuteissa. Yksinkertainen 3-vaiheen asennusopas Firestickille, Apple TV:lle, Androidille, älytelevisioille ja kaikille laitteille. Välitön aktivointi tilauksen jälkeen.',
+  },
+  is: {
+    title: 'StreamVault Uppsetningarleiðbeiningar – Auðveld Uppsetning í 3 Skrefum | Öll Tæki',
+    description: 'Settu upp StreamVault á nokkrum mínútum. Einföld 3-skrefa uppsetningarleiðbeining fyrir Firestick, Apple TV, Android, Smart-sjónvörp og öll tæki. Samstundis virkjun eftir áskrift.',
+  },
+};

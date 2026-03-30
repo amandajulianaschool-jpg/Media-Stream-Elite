@@ -8,22 +8,15 @@ interface NavLink {
 interface Props {
   navLinks?: NavLink[];
   joinNowLabel?: string;
+  choosePlanHref?: string;
   menuLabel?: string;
   openMenuLabel?: string;
   closeMenuLabel?: string;
 }
 
-const defaultNavLinks: NavLink[] = [
-  { label: 'Features', href: '#features' },
-  { label: 'Content', href: '#content' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Setup', href: '#setup' },
-  { label: 'FAQ', href: '#faq' },
-];
-
-export default function MobileMenu({ navLinks, joinNowLabel = 'Join Now', menuLabel = 'Menu', openMenuLabel = 'Open menu', closeMenuLabel = 'Close menu' }: Props) {
+export default function MobileMenu({ navLinks = [], joinNowLabel = 'Choose Plan', choosePlanHref = '/pricing', menuLabel = 'Menu', openMenuLabel = 'Open menu', closeMenuLabel = 'Close menu' }: Props) {
   const [open, setOpen] = useState(false);
-  const links = navLinks && navLinks.length > 0 ? navLinks : defaultNavLinks;
+  const links = navLinks.length > 0 ? navLinks : [];
 
   useEffect(() => {
     if (open) {
@@ -36,8 +29,20 @@ export default function MobileMenu({ navLinks, joinNowLabel = 'Join Now', menuLa
 
   const handleNav = (href: string) => {
     setOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    const hashIndex = href.indexOf('#');
+    if (hashIndex !== -1) {
+      const hash = href.slice(hashIndex);
+      const pathPart = href.slice(0, hashIndex).replace(/\/$/, '');
+      const currentPath = window.location.pathname.replace(/\/$/, '');
+      if (href.startsWith('#') || pathPart === '' || pathPart === currentPath) {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+      }
+    }
+    window.location.href = href;
   };
 
   return (
@@ -77,13 +82,13 @@ export default function MobileMenu({ navLinks, joinNowLabel = 'Join Now', menuLa
                 </button>
               ))}
               <div className="pt-4">
-                <button
-                  onClick={() => handleNav('#pricing')}
-                  className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-brand-500 hover:bg-brand-400 text-white font-semibold rounded-lg transition-all shadow-lg shadow-brand-500/30"
+                <a
+                  href={choosePlanHref}
+                  className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 text-white font-semibold rounded-lg transition-all shadow-lg shadow-brand-500/30"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                   {joinNowLabel}
-                </button>
+                </a>
               </div>
             </nav>
           </div>

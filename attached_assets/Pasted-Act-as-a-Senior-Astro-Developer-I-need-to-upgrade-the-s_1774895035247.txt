@@ -1,0 +1,28 @@
+Act as a Senior Astro Developer. I need to upgrade the site navigation logic and create dedicated SEO pages while preserving the current Homepage sections.
+
+### 1. Header Navigation Upgrade:
+- **Button Rename:** Change the "Join Now" button in the Header to **"Choose plan"** (ensure this is localized across all 6 languages).
+- **Absolute Localized Links:** Update the Header navigation to use absolute localized URLs instead of `#hash` links. 
+  - "Features" -> `getRelativeLocaleUrl(lang, '/#features')` (keep this as a hash to the homepage section).
+  - "Content" -> `getRelativeLocaleUrl(lang, '/content')`
+  - "Pricing" -> `getRelativeLocaleUrl(lang, '/pricing')`
+  - "Setup" -> `getRelativeLocaleUrl(lang, '/setup')`
+  - "Logo/Home" -> `getRelativeLocaleUrl(lang, '/')`
+- This ensures navigation works perfectly from both the Homepage and any Product/Subpage.
+
+### 2. Dedicated SEO Pages (No Homepage Changes):
+- Create 3 new standalone pages:
+  * `src/pages/[lang]/pricing.astro`
+  * `src/pages/[lang]/content.astro`
+  * `src/pages/[lang]/setup.astro`
+- **Constraint:** DO NOT remove or move any sections from `index.astro`. The Homepage must remain exactly as it is (a full landing page).
+- **Implementation:** These new pages should import and reuse the existing components (Pricing, Content/Channels, Setup) to maintain UI consistency but function as independent URLs.
+
+### 3. SEO & Localization:
+- Each of these 3 new pages needs unique, localized `<title>` and `<meta description>` tags for all 6 locales (en, da, no, sv, fi, is).
+- Ensure `getRelativeLocaleUrl` is correctly implemented so a Swedish user on the "Pricing" page stays in the `/sv/` directory.
+- Update the `sitemap-index.xml` logic (via the integration) to include these 24 new routes (4 pages x 6 languages).
+
+### 4. UI/UX Refinement:
+- Ensure the "Choose plan" button in the header is prominent and uses the brand's "Electric Blue" gradient.
+- All CTA buttons on the Homepage and Subpages should now consistently point to the localized product detail pages.

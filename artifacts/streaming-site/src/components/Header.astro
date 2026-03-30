@@ -1,6 +1,6 @@
 ---
 import MobileMenu from './react/MobileMenu';
-import { allLocalesList, getLocalePath, type Locale } from '../i18n/translations';
+import { allLocalesList, getLocalePath, getRelativeLocaleUrl, type Locale } from '../i18n/translations';
 import { t } from '../i18n/ui';
 
 interface Props {
@@ -12,14 +12,15 @@ const currentLocale = allLocalesList.find(l => l.code === locale) || allLocalesL
 const otherLocales = allLocalesList.filter(l => l.code !== locale);
 
 const navLinks = [
-  { label: t(locale, 'nav.features'), href: '#features' },
-  { label: t(locale, 'nav.content'), href: '#content' },
-  { label: t(locale, 'nav.pricing'), href: '#pricing' },
-  { label: t(locale, 'nav.setup'), href: '#setup' },
-  { label: t(locale, 'nav.faq'), href: '#faq' },
+  { label: t(locale, 'nav.features'), href: getRelativeLocaleUrl(locale, '/#features') },
+  { label: t(locale, 'nav.content'), href: getRelativeLocaleUrl(locale, '/content') },
+  { label: t(locale, 'nav.pricing'), href: getRelativeLocaleUrl(locale, '/pricing') },
+  { label: t(locale, 'nav.setup'), href: getRelativeLocaleUrl(locale, '/setup') },
+  { label: t(locale, 'nav.faq'), href: getRelativeLocaleUrl(locale, '/#faq') },
 ];
 
 const mobileNavLinks = navLinks.map(l => ({ label: l.label, href: l.href }));
+const choosePlanHref = getRelativeLocaleUrl(locale, '/pricing');
 ---
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" role="banner">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-18 flex items-center justify-between" aria-label="Main navigation">
@@ -83,11 +84,11 @@ const mobileNavLinks = navLinks.map(l => ({ label: l.label, href: l.href }));
           ))}
         </div>
       </div>
-      <a href="#pricing" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-500 hover:bg-brand-400 text-white text-sm font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-brand-500/25 hover:shadow-brand-400/40 hover:scale-105">
+      <a href={choosePlanHref} class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-brand-500 to-brand-400 hover:from-brand-400 hover:to-brand-300 text-white text-sm font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-brand-500/25 hover:shadow-brand-400/40 hover:scale-105">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        {t(locale, 'nav.joinNow')}
+        {t(locale, 'nav.choosePlan')}
       </a>
-      <MobileMenu client:load navLinks={mobileNavLinks} joinNowLabel={t(locale, 'nav.joinNow')} menuLabel={t(locale, 'nav.menu')} openMenuLabel={t(locale, 'aria.openMenu')} closeMenuLabel={t(locale, 'aria.closeMenu')} />
+      <MobileMenu client:load navLinks={mobileNavLinks} joinNowLabel={t(locale, 'nav.choosePlan')} choosePlanHref={choosePlanHref} menuLabel={t(locale, 'nav.menu')} openMenuLabel={t(locale, 'aria.openMenu')} closeMenuLabel={t(locale, 'aria.closeMenu')} />
     </div>
   </nav>
 </header>
@@ -113,13 +114,20 @@ const mobileNavLinks = navLinks.map(l => ({ label: l.label, href: l.href }));
     lastScroll = scrollY;
   }, { passive: true });
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"], a[href*="/#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      e.preventDefault();
       const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      if (!href) return;
+      const hashIndex = href.indexOf('#');
+      if (hashIndex === -1) return;
+      const hash = href.slice(hashIndex);
+      const isLocalHash = href.startsWith('#') || href.includes(window.location.pathname + '#') || (href.includes('/#') && window.location.pathname === href.slice(0, hashIndex).replace(/\/$/, '') + '/') || (href.includes('/#') && window.location.pathname === href.slice(0, hashIndex));
+      if (isLocalHash || window.location.pathname.replace(/\/$/, '') === href.slice(0, hashIndex).replace(/\/$/, '')) {
+        const target = document.querySelector(hash);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     });
   });
