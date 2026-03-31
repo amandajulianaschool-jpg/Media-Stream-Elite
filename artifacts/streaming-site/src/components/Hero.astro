@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import type { Locale } from '../i18n/translations';
 import { getRelativeLocaleUrl } from '../i18n/translations';
 import { t } from '../i18n/ui';
+import heroBgSrc from '../assets/images/streamvault-hero-background.png';
 
 interface Props {
   locale?: Locale;
@@ -12,13 +14,17 @@ const pricingHref = getRelativeLocaleUrl(locale, '/pricing');
 ---
 <section class="relative min-h-screen flex items-center pt-16 overflow-hidden" aria-labelledby="hero-heading">
   <div class="absolute inset-0 z-0" aria-hidden="true">
-    <img
-      src="/images/hero-bg.png"
+    <Image
+      src={heroBgSrc}
       alt=""
-      class="absolute inset-0 w-full h-full object-cover opacity-60 contrast-[1.2] brightness-[1.1] saturate-[1.1]"
+      widths={[640, 1024, 1408, 1920]}
+      sizes="100vw"
+      format="webp"
+      quality={80}
       loading="eager"
       decoding="async"
       fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover opacity-60 contrast-[1.2] brightness-[1.1] saturate-[1.1]"
     />
   </div>
 

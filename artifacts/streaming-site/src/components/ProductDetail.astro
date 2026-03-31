@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import type { Locale } from '../i18n/translations';
 import { getLocalePath } from '../i18n/translations';
 import { t } from '../i18n/ui';
 import { getWhatsAppTrialLink, getWhatsAppBuyLink } from '../i18n/whatsapp';
+import heroBgSrc from '../assets/images/streamvault-hero-background.png';
 
 interface Props {
   locale: Locale;
@@ -125,8 +127,28 @@ const whatsappBuyUrl = getWhatsAppBuyLink(locale, config.nameKey);
 
 const devices = ['Firestick', 'Android TV', 'Apple TV', 'Smart TV', 'iPhone', 'Android', 'PC/Mac'];
 ---
-<section class="relative min-h-screen pt-24 pb-16">
-  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative min-h-screen pt-24 pb-16 overflow-hidden">
+  <div class="absolute inset-0 z-0" aria-hidden="true">
+    <Image
+      src={heroBgSrc}
+      alt=""
+      widths={[640, 1024, 1408, 1920]}
+      sizes="100vw"
+      format="webp"
+      quality={65}
+      loading="eager"
+      decoding="async"
+      class="absolute inset-0 w-full h-full object-cover opacity-30 contrast-[1.1] brightness-[0.8] saturate-[0.9]"
+    />
+  </div>
+  <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#030712]/80 via-[#030712]/60 to-[#030712]/90 pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[400px] bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.06),transparent)]"></div>
+    <div class="absolute top-1/3 right-0 w-80 h-80 bg-brand-500/[0.03] rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/3 left-0 w-64 h-64 bg-brand-600/[0.03] rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <a href={pricingUrl} class="inline-flex items-center gap-2 text-slate-400 hover:text-brand-400 transition-colors mb-8 group">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
       {t(locale, 'product.backToPricing')}
@@ -139,7 +161,7 @@ const devices = ['Firestick', 'Android TV', 'Apple TV', 'Smart TV', 'iPhone', 'A
       </h1>
     </div>
 
-    <div class="bg-dark-800/60 border border-white/[0.06] rounded-2xl p-8 md:p-10 mb-8">
+    <div class="bg-dark-800/60 border border-white/[0.06] rounded-2xl p-8 md:p-10 mb-8 backdrop-blur-sm">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10 pb-8 border-b border-white/[0.06]">
         <div>
           <h2 class="text-2xl font-bold text-white mb-1">{planName}</h2>
@@ -222,7 +244,7 @@ const devices = ['Firestick', 'Android TV', 'Apple TV', 'Smart TV', 'iPhone', 'A
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-      <div class="rounded-2xl p-6 bg-dark-800/60 border border-white/[0.06]">
+      <div class="rounded-2xl p-6 bg-dark-800/60 border border-white/[0.06] backdrop-blur-sm">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
           <h4 class="text-white font-semibold">{t(locale, 'product.serverStatus')}</h4>
@@ -235,7 +257,7 @@ const devices = ['Firestick', 'Android TV', 'Apple TV', 'Smart TV', 'iPhone', 'A
         </div>
       </div>
 
-      <div class="rounded-2xl p-6 bg-dark-800/60 border border-white/[0.06]">
+      <div class="rounded-2xl p-6 bg-dark-800/60 border border-white/[0.06] backdrop-blur-sm">
         <h4 class="text-white font-semibold mb-4">{t(locale, 'product.compatibleDevices')}</h4>
         <div class="flex flex-wrap gap-2">
           {devices.map((device) => (

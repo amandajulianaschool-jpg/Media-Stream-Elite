@@ -1,0 +1,26 @@
+Act as a Senior Full-Stack Astro Developer. I need to perform a global image optimization and UI refinement for the Product Pages and the whole website.
+
+### 1. Product Page UI Refinement:
+- **Background Consistency:** Add a background image to all Product Pages (`src/pages/[lang]/product/[id].astro`) that matches the Homepage style.
+- **Implementation:** Use a subtle, dark-themed collage/overlay (diverse sports, movies, and channel icons) behind the product card. Ensure the card remains perfectly legible with its current glassmorphic effect and blue glowing buttons.
+- **Layout:** Ensure the "Back to Pricing" button and the WhatsApp "Buy Now" button remain exactly in their current positions as shown in the provided images.
+
+### 2. Global Image & Performance Optimization:
+- **Astro Image Component:** Replace all standard `<img>` tags across the entire site (Logo, Icons, Backgrounds) with the Astro `<Image />` component.
+- **Modern Formats:** Configure the site to automatically serve images in **AVIF** and **WebP** formats for maximum loading speed.
+- **Responsive Images:** Implement `srcSet` and `sizes` to serve appropriately sized images for mobile and desktop.
+- **Lazy Loading:** Ensure all images below the fold are set to `loading="lazy"`.
+
+### 3. SEO Alt-Tags & Metadata (6 Locales):
+- **Localized Alt Tags:** Audit every image and add descriptive, keyword-rich `alt` attributes in the 6 target languages (en, da, no, sv, fi, is). 
+- *Example for Specs Icons:* "4K Streaming Quality Icon", "Anti-Freeze Technology Shield", etc.
+- **File Naming:** Rename image assets to be SEO-friendly (e.g., `streamvault-nordic-iptv-logo.avif`) using hyphens and lowercase.
+
+### 4. Logic & Content Integrity Check:
+- **WhatsApp:** Ensure all redirects (Buy Now, Request Trial) still point to `+212631130357` with localized messages.
+- **4H Trial:** Double-check that all text mentions "4 Hours Free Trial" and NOT 24 hours.
+- **Hybrid Navigation:** Keep the 5 subpages (Features, Content, Pricing, Setup, FAQ) and the conditional header/footer logic we implemented.
+- **Button Text:** Confirm the header button says "Choose Plan".
+
+### Goal:
+Deliver a visually stunning product page with the same premium background feel as the homepage, while achieving a 95+ PageSpeed Insight score through advanced image optimization and Astro's best practices.

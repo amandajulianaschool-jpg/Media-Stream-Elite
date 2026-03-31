@@ -1,6 +1,26 @@
 ---
+import { Image } from 'astro:assets';
 import type { Locale } from '../i18n/translations';
 import { t } from '../i18n/ui';
+
+import premierLeagueSrc from '../assets/images/content/streamvault-premier-league.png';
+import championsLeagueSrc from '../assets/images/content/streamvault-champions-league.png';
+import nbaSrc from '../assets/images/content/streamvault-nba-basketball.png';
+import formula1Src from '../assets/images/content/streamvault-formula1-racing.png';
+import ufcBoxingSrc from '../assets/images/content/streamvault-ufc-boxing.png';
+import cricketSrc from '../assets/images/content/streamvault-cricket.png';
+import actionSrc from '../assets/images/content/streamvault-action-movies.png';
+import scifiSrc from '../assets/images/content/streamvault-scifi-movies.png';
+import dramaThrillerSrc from '../assets/images/content/streamvault-drama-thriller.png';
+import comedySrc from '../assets/images/content/streamvault-comedy-movies.png';
+import horrorSrc from '../assets/images/content/streamvault-horror-movies.png';
+import familySrc from '../assets/images/content/streamvault-family-movies.png';
+import crimeMysterySrc from '../assets/images/content/streamvault-crime-mystery.png';
+import kdramaSrc from '../assets/images/content/streamvault-kdrama-series.png';
+import documentarySrc from '../assets/images/content/streamvault-documentary.png';
+import animeSrc from '../assets/images/content/streamvault-anime-series.png';
+import realityTVSrc from '../assets/images/content/streamvault-reality-tv.png';
+import classicsSrc from '../assets/images/content/streamvault-classic-movies.png';
 
 interface Props {
   locale?: Locale;
@@ -15,36 +35,36 @@ const categories = [
     title: liveSportsTitle,
     isLive: true,
     items: [
-      { name: t(locale, 'content.premierLeague'), image: '/images/content/premier-league.png' },
-      { name: t(locale, 'content.championsLeague'), image: '/images/content/champions-league.png' },
-      { name: t(locale, 'content.nba'), image: '/images/content/nba.png' },
-      { name: t(locale, 'content.formula1'), image: '/images/content/formula1.png' },
-      { name: t(locale, 'content.ufcBoxing'), image: '/images/content/ufc-boxing.png' },
-      { name: t(locale, 'content.cricket'), image: '/images/content/cricket.png' },
+      { name: t(locale, 'content.premierLeague'), image: premierLeagueSrc, altKey: 'alt.premierLeague' },
+      { name: t(locale, 'content.championsLeague'), image: championsLeagueSrc, altKey: 'alt.championsLeague' },
+      { name: t(locale, 'content.nba'), image: nbaSrc, altKey: 'alt.nba' },
+      { name: t(locale, 'content.formula1'), image: formula1Src, altKey: 'alt.formula1' },
+      { name: t(locale, 'content.ufcBoxing'), image: ufcBoxingSrc, altKey: 'alt.ufcBoxing' },
+      { name: t(locale, 'content.cricket'), image: cricketSrc, altKey: 'alt.cricket' },
     ],
   },
   {
     title: t(locale, 'content.latestMovies'),
     isLive: false,
     items: [
-      { name: t(locale, 'content.action'), image: '/images/content/action.png' },
-      { name: t(locale, 'content.scifi'), image: '/images/content/scifi.png' },
-      { name: t(locale, 'content.dramaThriller'), image: '/images/content/drama-thriller.png' },
-      { name: t(locale, 'content.comedy'), image: '/images/content/comedy.png' },
-      { name: t(locale, 'content.horror'), image: '/images/content/horror.png' },
-      { name: t(locale, 'content.family'), image: '/images/content/family.png' },
+      { name: t(locale, 'content.action'), image: actionSrc, altKey: 'alt.action' },
+      { name: t(locale, 'content.scifi'), image: scifiSrc, altKey: 'alt.scifi' },
+      { name: t(locale, 'content.dramaThriller'), image: dramaThrillerSrc, altKey: 'alt.dramaThriller' },
+      { name: t(locale, 'content.comedy'), image: comedySrc, altKey: 'alt.comedy' },
+      { name: t(locale, 'content.horror'), image: horrorSrc, altKey: 'alt.horror' },
+      { name: t(locale, 'content.family'), image: familySrc, altKey: 'alt.family' },
     ],
   },
   {
     title: t(locale, 'content.trendingSeries'),
     isLive: false,
     items: [
-      { name: t(locale, 'content.crimeMystery'), image: '/images/content/crime-mystery.png' },
-      { name: t(locale, 'content.kdrama'), image: '/images/content/kdrama.png' },
-      { name: t(locale, 'content.documentary'), image: '/images/content/documentary.png' },
-      { name: t(locale, 'content.anime'), image: '/images/content/anime.png' },
-      { name: t(locale, 'content.realityTV'), image: '/images/content/reality-tv.png' },
-      { name: t(locale, 'content.classics'), image: '/images/content/classics.png' },
+      { name: t(locale, 'content.crimeMystery'), image: crimeMysterySrc, altKey: 'alt.crimeMystery' },
+      { name: t(locale, 'content.kdrama'), image: kdramaSrc, altKey: 'alt.kdrama' },
+      { name: t(locale, 'content.documentary'), image: documentarySrc, altKey: 'alt.documentary' },
+      { name: t(locale, 'content.anime'), image: animeSrc, altKey: 'alt.anime' },
+      { name: t(locale, 'content.realityTV'), image: realityTVSrc, altKey: 'alt.realityTV' },
+      { name: t(locale, 'content.classics'), image: classicsSrc, altKey: 'alt.classics' },
     ],
   },
 ];
@@ -71,12 +91,16 @@ const categories = [
         {category.items.map((item) => (
           <div class="group cursor-pointer">
             <div class="relative aspect-[2/3] rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-[1.04] group-hover:shadow-2xl group-hover:shadow-brand-500/10 ring-1 ring-white/[0.06] group-hover:ring-brand-500/30">
-              <img
+              <Image
                 src={item.image}
-                alt={item.name}
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                alt={t(locale, item.altKey)}
+                widths={[200, 300, 400]}
+                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
+                format="webp"
+                quality={75}
                 loading="lazy"
                 decoding="async"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
               <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

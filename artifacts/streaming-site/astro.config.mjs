@@ -6,6 +6,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.streamvault.com',
   output: 'static',
+  image: {
+    domains: [],
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'da', 'no', 'sv', 'fi', 'is'],
