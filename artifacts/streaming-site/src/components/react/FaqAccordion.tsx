@@ -11,28 +11,48 @@ interface Props {
 
 const defaultFaqs: FaqItem[] = [
   {
-    question: 'Which devices are supported for streaming?',
-    answer: 'StreamVault supports all major devices including Amazon Firestick, Apple TV (all generations), Android phones and tablets, Smart TVs (Samsung, LG, Sony, Hisense), iPhone, iPad, Windows PC, Mac, and any web browser. Our app is available on Google Play Store and Apple App Store.',
+    question: 'What is StreamVault IPTV and how does it work?',
+    answer: 'StreamVault is a premium IPTV service offering 20,000+ live TV channels, 65,000+ movies and series on demand. It works on any internet-connected device — simply install a compatible app, enter your login credentials, and start watching instantly. No satellite dish or cable box required.',
   },
   {
-    question: 'Is StreamVault compatible with VPN services?',
-    answer: 'Yes, StreamVault works seamlessly with all major VPN providers including NordVPN, ExpressVPN, Surfshark, and CyberGhost. You can stream all 20,000+ channels without any VPN restrictions or bandwidth throttling.',
+    question: 'What devices are compatible with StreamVault?',
+    answer: 'StreamVault works on virtually every device: Amazon Firestick, Android TV, Smart TVs (Samsung, LG, Sony, Hisense), Apple TV, iPhone, iPad, Android phones and tablets, Windows PC, Mac, and any modern web browser. Dedicated apps are available for the best experience.',
   },
   {
-    question: 'Is there a free trial available?',
-    answer: 'We offer a 4-hour free trial so you can test the full service before committing to a plan. No credit card required for the trial. After the trial, choose from our Monthly, 6-Month, or 12-Month plans.',
+    question: 'Do I need a VPN to use StreamVault?',
+    answer: 'No, a VPN is not required to use StreamVault. Our service works perfectly without one. However, if you prefer to use a VPN for privacy, StreamVault is fully compatible with all major providers including NordVPN, ExpressVPN, Surfshark, and CyberGhost — with zero speed throttling.',
   },
   {
-    question: 'How many simultaneous connections are included?',
-    answer: 'All plans include 2 simultaneous connections, allowing you to stream on two devices at the same time. You can add extra connections for a small fee if needed.',
+    question: 'Is the free trial really free? Do I need a credit card?',
+    answer: 'Yes, our 4-hour free trial is 100% free with absolutely no credit card or payment information required. Simply contact us via WhatsApp, receive your trial credentials instantly, and enjoy full access to all channels and VOD content. No strings attached.',
   },
   {
-    question: 'What is Anti-Freeze Technology 2.0?',
-    answer: 'Anti-Freeze Technology 2.0 is our proprietary buffering elimination system that uses intelligent pre-loading and adaptive bitrate streaming to ensure your content plays without interruptions, even on slower internet connections as low as 10 Mbps.',
+    question: 'Which Nordic and Scandinavian channels are available?',
+    answer: 'StreamVault offers extensive Nordic coverage including all major Danish, Norwegian, Swedish, Finnish, and Icelandic channels. Watch DR, TV2 Danmark, NRK, SVT, Yle, RÚV, and hundreds more — plus premium sports channels like Viaplay, TV2 Sport, and Eurosport.',
   },
   {
-    question: 'How quickly can I get access after subscribing?',
-    answer: 'Activation is instant. You receive your login credentials via email within seconds of payment. Simply download our app or open the web player and start watching your favourite content immediately.',
+    question: 'What internet speed do I need for 4K streaming?',
+    answer: 'For optimal 4K Ultra HD streaming, we recommend a minimum of 25 Mbps. Our Anti-Freeze Technology 2.0 ensures smooth playback even on connections as low as 10 Mbps by using intelligent buffering and adaptive bitrate streaming.',
+  },
+  {
+    question: 'How do I receive my login details after purchase?',
+    answer: 'After purchase, your login credentials are delivered instantly via WhatsApp or Email — whichever you prefer. Most customers are watching within 60 seconds of receiving their details. Our team is available 24/7 to help with setup if needed.',
+  },
+  {
+    question: 'What is the best app for Firestick and Smart TV?',
+    answer: 'We recommend several premium apps depending on your device: for Firestick, TiviMate and IPTV Smarters Pro are excellent choices. For Smart TVs, Smart IPTV and IPTV Smarters work great. Our support team will guide you to the perfect app and help with installation via WhatsApp.',
+  },
+  {
+    question: 'Is VOD (Video on Demand) included in all plans?',
+    answer: 'Yes, every StreamVault plan includes access to our massive VOD library with 65,000+ movies and TV series. This includes the latest blockbusters, classic films, complete TV series, documentaries, anime, K-drama, and kids content — all updated regularly.',
+  },
+  {
+    question: 'Can I use StreamVault when travelling abroad?',
+    answer: 'Absolutely! StreamVault works anywhere in the world with an internet connection. Whether you are on holiday, travelling for business, or living abroad, you can access all your favourite channels and content just as you would at home. No geo-restrictions apply.',
+  },
+  {
+    question: 'How do I contact StreamVault for technical support?',
+    answer: 'Our 24/7 support team is available via WhatsApp at +212631130357 for instant assistance. Average response time is under 2 minutes. We help with installation, app setup, troubleshooting, account management, and any technical questions you may have.',
   },
 ];
 
@@ -71,7 +91,7 @@ export default function FaqAccordion({ faqs }: Props) {
             role="region"
             className="overflow-hidden transition-all duration-300"
             style={{
-              maxHeight: openIndex === i ? '300px' : '0',
+              maxHeight: openIndex === i ? '500px' : '0',
               opacity: openIndex === i ? 1 : 0,
             }}
           >

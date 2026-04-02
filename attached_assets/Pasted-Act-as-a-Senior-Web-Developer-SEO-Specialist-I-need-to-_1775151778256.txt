@@ -1,0 +1,34 @@
+Act as a Senior Web Developer & SEO Specialist. I need to perform a major update to the Homepage content, UI scaling, and FAQ section.
+
+### 1. UI Scaling (Devices Section):
+- In the "Compatible with all your devices" section (Homepage):
+  - Increase the font size of the heading "COMPATIBLE WITH ALL YOUR DEVICES" (make it more prominent).
+  - Scale up all device icons (Firestick, Apple TV, Android, etc.) and their labels by at least 25% to 40% for better visibility.
+
+### 2. Process Update (3 Simple Steps):
+Update the text in the "3 Simple Steps" component:
+- **Step 2 (Receive Access):** Change description to: "Your login credentials are delivered instantly via WhatsApp or Email. Setup takes under 60 seconds on any device."
+- **Step 3 (Start Watching):** Change description to: "Enjoy the best user experience with our dedicated apps. We offer multiple premium app options tailored specifically to your device (Smart TV, Firestick, or Mobile)."
+
+### 3. Global Content Cleanup:
+- **Remove Connections:** Search and remove ALL mentions of "Simultaneous Connections" or "Number of Devices" from the pricing tables, product pages, and features list.
+- **Downgrade 8K to 4K:** Globally replace any mention of "8K Quality" or "8K Ultra HD" with **"4K Ultra HD"** to maintain realistic expectations and technical accuracy.
+
+### 4. SEO Optimized FAQ Section (11 Questions Max):
+Implement/Update the FAQ component with these specific, SEO-rich questions (Localized for all 6 languages):
+1. **What is StreamVault IPTV and how does it work?**
+2. **Which devices are compatible with your service?** (Mention Firestick, Smart TV, Android, iOS).
+3. **Do I need a VPN to use StreamVault?** (Answer: No, our servers are highly secure).
+4. **Is the 4-hour free trial really free?** (Answer: Yes, no credit card required).
+5. **What channels can I watch in the Nordic region?** (Focus on Sports, Movies, and Local Nordic channels).
+6. **How fast should my internet connection be for 4K streaming?**
+7. **How do I receive my login details?** (Answer: Via WhatsApp or Email instantly).
+8. **What is the best app to use on a Firestick or Smart TV?** (Mention customized app support).
+9. **Does StreamVault include VOD (Movies & Series)?** (Answer: Yes, over 65,000+ titles).
+10. **Can I use the service while traveling abroad?**
+11. **How can I get technical support if I have issues?** (Link to WhatsApp).
+
+### 5. Technical Requirements:
+- Ensure all text changes are correctly localized in all 6 languages (en, da, no, sv, fi, is).
+- Maintain the dark premium UI, glassmorphism, and blue glowing accents.
+- Verify that the Header button still says "Choose Plan" and redirects correctly.
