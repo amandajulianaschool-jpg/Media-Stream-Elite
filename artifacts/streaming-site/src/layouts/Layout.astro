@@ -16,8 +16,8 @@ interface Props {
 const {
   title = 'StreamVault – The Ultimate 4K Global Streaming Service | 20,000+ Channels',
   description = 'Access 20,000+ global TV channels, blockbuster movies and premium series in stunning 4K. Anti-Freeze Technology, instant activation. Try free for 4 hours.',
-  canonical = 'https://streamvault.tv',
-  ogImage = 'https://streamvault.tv/opengraph.jpg',
+  canonical = 'https://www.streamvault.com',
+  ogImage = 'https://www.streamvault.com/opengraph.jpg',
   ogType = 'website',
   locale = 'en' as Locale,
   schema,
@@ -38,9 +38,8 @@ const isSubpage = subpageNames.includes(subpageName);
 
 function getHreflangUrl(loc: string, page?: string): string {
   const base = 'https://www.streamvault.com';
-  const prefix = loc === 'en' ? '' : `/${loc}`;
-  if (page) return `${base}${prefix}/${page}/`;
-  return `${base}${prefix}/`;
+  if (page) return `${base}/${loc}/${page}/`;
+  return `${base}/${loc}/`;
 }
 ---
 <!doctype html>

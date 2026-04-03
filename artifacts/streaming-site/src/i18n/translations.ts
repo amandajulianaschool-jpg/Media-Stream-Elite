@@ -21,16 +21,16 @@ export const locales: Record<Locale, LocaleConfig> = {
 export const allLocalesList = Object.values(locales);
 
 export function getLocalePath(locale: Locale): string {
-  return locale === 'en' ? '/' : `/${locale}/`;
+  return `/${locale}/`;
 }
 
 export function getLocaleUrl(locale: Locale): string {
-  return locale === 'en' ? 'https://www.streamvault.com/' : `https://www.streamvault.com/${locale}/`;
+  return `https://www.streamvault.com/${locale}/`;
 }
 
 export function getRelativeLocaleUrl(locale: Locale, path: string): string {
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  return locale === 'en' ? `/${cleanPath}` : `/${locale}/${cleanPath}`;
+  return `/${locale}/${cleanPath}`;
 }
 
 export interface HeroTranslations {

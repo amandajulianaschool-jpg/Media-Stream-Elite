@@ -9,6 +9,7 @@
     "preview": "astro preview --host 0.0.0.0 --port ${PORT:-19326}"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.5",
     "@astrojs/react": "^4.0.0",
     "@astrojs/sitemap": "^3.2.0",
     "@astrojs/tailwind": "^6.0.0",

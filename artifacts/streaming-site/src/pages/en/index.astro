@@ -12,7 +12,9 @@ import Footer from '../../components/Footer.astro';
 import { pageMeta } from '../../i18n/translations';
 import { t } from '../../i18n/ui';
 
-const locale = 'fi' as const;
+export const prerender = true;
+
+const locale = 'en' as const;
 const meta = pageMeta[locale];
 
 const faqSchema = {
@@ -28,7 +30,7 @@ const faqSchema = {
   ]
 };
 ---
-<Layout schema={faqSchema} locale={locale} title={meta.title} description={meta.description} canonical="https://www.streamvault.com/fi/">
+<Layout schema={faqSchema} locale={locale} title={meta.title} description={meta.description} canonical="https://www.streamvault.com/en/">
   <Header locale={locale} />
   <main>
     <Hero locale={locale} />

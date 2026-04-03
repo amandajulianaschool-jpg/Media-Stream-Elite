@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { title, description, pubDate, updatedDate, heroImage, author, tags, category, slug } = Astro.props;
-const postCanonical = `https://streamvault.tv/blog/${slug}/`;
+const postCanonical = `https://www.streamvault.com/blog/${slug}/`;
 
 const formattedDate = pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 const formattedUpdate = updatedDate?.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -35,7 +35,7 @@ const articleSchema = {
   "headline": title,
   "description": description,
   "author": { "@type": "Person", "name": author },
-  "publisher": { "@type": "Organization", "name": "StreamVault", "url": "https://streamvault.tv" },
+  "publisher": { "@type": "Organization", "name": "StreamVault", "url": "https://www.streamvault.com" },
   "datePublished": pubDate.toISOString(),
   ...(updatedDate ? { "dateModified": updatedDate.toISOString() } : {}),
   ...(heroImage ? { "image": heroImage } : {}),

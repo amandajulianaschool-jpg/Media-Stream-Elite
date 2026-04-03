@@ -141,6 +141,18 @@ const localeAwareSubpage = ['features', 'content', 'pricing', 'setup', 'faq'].in
     });
   });
 
+  const localeDropdownEl = document.getElementById('locale-dropdown');
+  if (localeDropdownEl) {
+    localeDropdownEl.querySelectorAll('a[role="menuitem"]').forEach(link => {
+      link.addEventListener('click', () => {
+        const href = (link as HTMLAnchorElement).getAttribute('href') || '/';
+        const match = href.match(/^\/(da|no|sv|fi|is)\b/);
+        const chosenLocale = match ? match[1] : 'en';
+        document.cookie = `sv-preferred-locale=${chosenLocale};path=/;max-age=${60 * 60 * 24 * 365};SameSite=Lax`;
+      });
+    });
+  }
+
   const toggle = document.getElementById('locale-toggle');
   const dropdown = document.getElementById('locale-dropdown');
   const chevron = document.getElementById('locale-chevron');
