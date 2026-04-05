@@ -63,8 +63,8 @@ export default function MobileMenu({ navLinks = [], joinNowLabel = 'Choose Plan'
 
       {open && (
         <div id="mobile-nav" className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true">
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setOpen(false)} />
-          <div className="absolute top-0 right-0 h-full w-72 bg-dark-900/95 backdrop-blur-xl border-l border-white/10 shadow-2xl transform animate-slide-in">
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setOpen(false)} />
+          <div className="absolute top-0 right-0 h-full w-72 bg-slate-950/[0.98] backdrop-blur-xl border-l border-white/10 shadow-2xl transform animate-slide-in">
             <div className="flex items-center justify-between p-5 border-b border-white/10">
               <span className="text-lg font-bold text-white">{menuLabel}</span>
               <button onClick={() => setOpen(false)} className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10" aria-label={closeMenuLabel}>
