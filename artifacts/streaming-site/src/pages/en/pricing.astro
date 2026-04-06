@@ -14,7 +14,7 @@ const meta = pricingPageMeta[locale];
 <Layout locale={locale} title={meta.title} description={meta.description} canonical={`${getLocaleUrl(locale)}pricing/`}>
   <Header locale={locale} />
   <main class="pt-24">
-    <Pricing locale={locale} />
+    <Pricing locale={locale} headingLevel="h1" />
     <FreeTrial locale={locale} />
   </main>
   <Footer locale={locale} />

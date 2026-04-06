@@ -11,7 +11,7 @@ const meta = contentPageMeta[locale];
 <Layout locale={locale} title={meta.title} description={meta.description} canonical={`${getLocaleUrl(locale)}content/`}>
   <Header locale={locale} />
   <main class="pt-24">
-    <ContentShowcase locale={locale} />
+    <ContentShowcase locale={locale} headingLevel="h1" />
   </main>
   <Footer locale={locale} />
 </Layout>

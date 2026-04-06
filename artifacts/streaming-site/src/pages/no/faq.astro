@@ -25,7 +25,7 @@ const faqSchema = {
 <Layout schema={faqSchema} locale={locale} title={meta.title} description={meta.description} canonical={`${getLocaleUrl(locale)}faq/`}>
   <Header locale={locale} />
   <main class="pt-24">
-    <Faq locale={locale} />
+    <Faq locale={locale} headingLevel="h1" />
   </main>
   <Footer locale={locale} />
 </Layout>

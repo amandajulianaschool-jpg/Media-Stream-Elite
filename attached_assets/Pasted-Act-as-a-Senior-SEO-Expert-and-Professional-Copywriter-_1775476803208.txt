@@ -1,0 +1,25 @@
+Act as a Senior SEO Expert and Professional Copywriter. I need a global audit and enhancement of the written text across the entire website to align with Google's E-E-A-T guidelines and maximize conversion.
+
+### 1. SEO Technical Audit:
+- **Header Hierarchy:** Ensure every page has exactly one `<h1>` containing the primary keyword (e.g., "Premium IPTV") and logical `<h2>`, `<h3>` structures.
+- **Meta Tags:** Verify that every page in all 6 locales (en, da, no, sv, fi, is) has a unique, high-CTR Meta Title and Meta Description.
+- **Semantic HTML:** Ensure all lists use `<ul>`/`<li>` and sections use `<section>` or `<article>` for better crawling.
+
+### 2. "Smart Method" Content Enhancement (NO Trademarks):
+Rewrite and enhance the text to indicate a massive content library WITHOUT using "dangerous" keywords (e.g., avoid beIN, Sky, DAZN, BT Sport). Use professional synonyms:
+- **Live Channels:** Use "Elite International Networks", "Local Nordic Broadcasting", "Premium Global Live TV".
+- **Sports/Football:** Use "Access to All Top-Tier European Leagues", "Home of Major Football Tournaments", "Global Combat Sports & Motorsports Elites", "Premium US Sports Networks".
+- **Movies/Series:** Use "65,000+ Blockbuster Titles", "Latest Streaming Originals", "Global VOD Library updated daily", "Cinematic Experience in 4K".
+- **Value Proposition:** Emphasize that "Everything the customer wants is here in one place."
+
+### 3. Localization & Tone:
+- Maintain a **Premium, Trustworthy, and Authoritative** tone.
+- Ensure the enhancements are perfectly translated into the 6 target languages, keeping the cultural nuances of the Nordic region.
+- **Crucial:** NO changes to the design, layout, or formatting. Only the "written text" inside the existing components should be optimized.
+
+### 4. Global Content Check:
+- Review the "Features", "Pricing", "FAQ", and "Content Library" sections.
+- Ensure the text creates a sense of "All-in-One Entertainment" while highlighting the "4-hour Free Trial" and "WhatsApp Support" as trust signals.
+
+### Goal:
+Transform the website into an SEO powerhouse that Google loves, using smart copywriting to promise a complete viewing experience while staying 100% safe from trademark issues.
