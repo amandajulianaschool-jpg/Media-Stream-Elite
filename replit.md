@@ -30,7 +30,7 @@ The monorepo uses pnpm workspaces with TypeScript 5.9. Each package is a composi
     - **SEO**: Comprehensive meta tags (OG, Twitter, canonical), per-locale `hreflang` tags, JSON-LD schemas (FAQPage, Service), automated XML sitemap with i18n alternates, and `robots.txt`. Production domain: `https://www.streamvault.com`. All canonical/hreflang URLs use this domain consistently. Primary keyword "Premium IPTV" is used in all h1 tags and meta titles. All content labels use trademark-safe generic synonyms (e.g., "European Football" instead of "Premier League"). Section components (Features, Pricing, ContentShowcase, Faq, Setup) accept a `headingLevel` prop (`h1`|`h2`, default `h2`) so subpages render h1 for proper heading hierarchy.
     - **Image Optimization**: Utilizes Astro's `<Image />` component with `sharp` for WebP conversion, responsive `srcset`, and lazy loading. Images are stored in `src/assets/images/`.
     - **Content Management**: Astro Content Collections are configured for `guides` and `blog`.
-    - **Pricing Model**: A 4-tier pricing system (Trial, Starter, Pro, Ultimate) with localized details for VOD count, Anti-Freeze level, and support tiers.
+    - **Pricing Model**: A 4-tier pricing system (1/3/6/12 months) with identical features across all plans — 20,000+ channels, 65,000+ VOD, 4K Ultra HD, Anti-Freeze 10.0 Premium, 24/7 Premium Support, All Devices. Only duration and total price differ.
     - **Legal Pages**: Includes Terms, Privacy, DMCA, and Cookies pages with specific content and contact information.
 - **`lib/db`**: Database layer using Drizzle ORM for PostgreSQL. Exports a Drizzle client and schema models.
 - **`lib/api-spec`**: Manages the OpenAPI 3.1 specification and Orval configuration to generate API client code.
